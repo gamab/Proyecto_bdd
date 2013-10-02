@@ -75,20 +75,29 @@ CONSTRAINT fk_codigo_infraccion_multa FOREIGN KEY (codigo_infraccion) REFERENCES
 );
 
 
---##########################
---## CREACION DE ARCHIVOS ##
---##########################
+-- ##########################
+-- ## CREACION DE ARCHIVOS ##
+-- ##########################
 
 -- Persona(*DNI,nombreYApellido,fechaNacimiento,direccion,telefono,puntosCarnet)
+INSERT INTO Persona
+VALUES ();
 
 -- Vehiculo(*nro_patente,tipo,marca,modelo,ano)
+INSERT INTO Vehiculo
+VALUES ();
 
 -- Propietario(*nro_patente,*dni)
+INSERT INTO Propietario
+VALUES ();
 
 -- Infraccion(*codigo,descripcion,valor)
+INSERT INTO Infraccion
+VALUES ();
 
 -- Multa(*nro_multa,nro_patente,codigo_infraccion,dni,hora,fecha,lugar)
-
+INSERT INTO Multa
+VALUES ();
 
 
 
