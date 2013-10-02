@@ -21,7 +21,7 @@ CONSTRAINT pk_dni PRIMARY KEY (dni)
 );
 
 CREATE TABLE Vehiculo(
-patente VARCHAR(6),
+patente VARCHAR(6) NOT NULL,
 tipo VARCHAR(30),
 marca T_MARCA,
 modelo VARCHAR(30),
