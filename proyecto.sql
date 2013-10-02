@@ -1,0 +1,61 @@
+﻿-- PROYECTO
+
+CREATE TABLE Persona(
+dni INTEGER NOT NULL
+nombreYApellido VARCHAR(80) NOT NULL
+fechaNacimiento DATE NOT NULL
+direccion TEXT NOT NULL
+telefono VARCHAR(11) NOT NULL
+puntosCarnet 
+CONSTRAINT ck_positive CHECK (dni > 0)
+CONSTRAINT pk_dni PRIMARY KEY (dni);
+);
+
+CREATE TABLE vehiculo(
+patente
+tipo 
+marca
+modelo
+ano 
+CONSTRAINT pk_patente PRIMARY KEY (patente)
+);
+
+CREATE TABLE Propietario(
+patente
+dni INTEGER NOT NULL
+CONSTRAINT pk_propietario PRIMARY KEY (patente,dni),
+CONSTRAINT fk_patente_propietario FOREIGN KEY (patente) REFERENCES vehiculo(patente),
+CONSTRAINT fk_dni_propietario FOREIGN KEY (dni) REFERENCES Persona(dni)
+);
+
+CREATE TABLE Infraccion(
+codigo INTEGER NOT NULL
+descripcion TEXT NOT NULL
+valor FLOAT 
+CONSTRAINT ck_inf_poc CHECK (codigo > 0)
+CONSTRAINT pk_codigo PRIMARY KEY (codigo)
+);
+
+CREATE TABLE Multa(
+multa
+patente
+codigo_infraccion
+dni INTEGER NOT NULL
+hora 
+fecha DATE NOT NULL
+lugar 
+CONSTRAINT pk_multa PRIMARY KEY (multa),
+CONSTRAINT fk_patente_multa FOREIGN KEY (patente) REFERENCES Vehiculo(patente),
+CONSTRAINT fk_dni_multa FOREIGN KEY (dni) REFERENCES Persona(dni),
+CONSTRAINT fk_codigo_infraccion FOREIGN KEY (codigo_infraccion) REFERENCES Infraccion(codigo)
+);
+
+
+
+
+
+
+
+
+
+
