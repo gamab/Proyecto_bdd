@@ -35,8 +35,8 @@ CREATE TABLE Propietario(
 patente VARCHAR(6) NOT NULL,
 dni INTEGER NOT NULL,
 CONSTRAINT pk_propietario PRIMARY KEY (patente,dni),
-CONSTRAINT fk_patente_propietario FOREIGN KEY (patente) REFERENCES vehiculo(patente),
-CONSTRAINT fk_dni_propietario FOREIGN KEY (dni) REFERENCES Persona(dni)
+CONSTRAINT fk_patente_propietario FOREIGN KEY (patente) REFERENCES vehiculo(patente) ON DELETE CASACADE,
+CONSTRAINT fk_dni_propietario FOREIGN KEY (dni) REFERENCES Persona(dni) ON DELETE CASACADE
 );
 
 CREATE TABLE Infraccion(
