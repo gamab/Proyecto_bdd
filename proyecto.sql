@@ -2,9 +2,9 @@
 
 CAN T RUN BECAUSE OF THIS LINE
 
---#######################
---## CREACION DE TYPOS ##
---#######################
+-- #######################
+-- ## CREACION DE TYPOS ##
+-- #######################
 
 -- Creacion de un dominio para el puntosCarnet
 CREATE DOMAIN PUNTOS AS SMALLINT
@@ -15,11 +15,11 @@ CHECK (
 -- Creacion del typo T_MARCA que enumera las marcas de vehiculo.
 CREATE TYPE T_MARCA AS ENUM ('FIAT','FORD','RENAULT');
 
---########################
---## CREACION DE TABLAS ##
---########################
+-- ########################
+-- ## CREACION DE TABLAS ##
+-- ########################
 
-
+-- Persona(*DNI,nombreYApellido,fechaNacimiento,direccion,telefono,puntosCarnet)
 CREATE TABLE Persona(
 dni INTEGER NOT NULL,
 nombreYApellido VARCHAR(80) NOT NULL,
@@ -31,6 +31,7 @@ CONSTRAINT ck_positive CHECK (dni > 0),
 CONSTRAINT pk_persona PRIMARY KEY (dni)
 );
 
+-- Vehiculo(*nro_patente,tipo,marca,modelo,ano)
 CREATE TABLE Vehiculo(
 nro_patente VARCHAR(6) NOT NULL,
 tipo VARCHAR(30),
@@ -40,6 +41,7 @@ ano INTEGER,
 CONSTRAINT pk_vehiculo PRIMARY KEY (nro_patente)
 );
 
+-- Propietario(*nro_patente,*dni)
 CREATE TABLE Propietario(
 nro_patente VARCHAR(6) NOT NULL,
 dni INTEGER NOT NULL,
@@ -48,6 +50,7 @@ CONSTRAINT fk_nro_patente_propietario FOREIGN KEY (nro_patente) REFERENCES vehic
 CONSTRAINT fk_dni_propietario FOREIGN KEY (dni) REFERENCES Persona(dni) ON DELETE CASACADE
 );
 
+-- Infraccion(*codigo,descripcion,valor)
 CREATE TABLE Infraccion(
 codigo INTEGER NOT NULL,
 descripcion TEXT NOT NULL,
@@ -56,6 +59,7 @@ CONSTRAINT ck_inf_poc CHECK (codigo > 0),
 CONSTRAINT pk_infraccion PRIMARY KEY (codigo)
 );
 
+-- Multa(*nro_multa,nro_patente,codigo_infraccion,dni,hora,fecha,lugar)
 CREATE TABLE Multa(
 nro_multa INTEGER NOT NULL,
 nro_patente VARCHAR(6) NOT NULL,
@@ -75,9 +79,15 @@ CONSTRAINT fk_codigo_infraccion_multa FOREIGN KEY (codigo_infraccion) REFERENCES
 --## CREACION DE ARCHIVOS ##
 --##########################
 
+-- Persona(*DNI,nombreYApellido,fechaNacimiento,direccion,telefono,puntosCarnet)
 
+-- Vehiculo(*nro_patente,tipo,marca,modelo,ano)
 
+-- Propietario(*nro_patente,*dni)
 
+-- Infraccion(*codigo,descripcion,valor)
+
+-- Multa(*nro_multa,nro_patente,codigo_infraccion,dni,hora,fecha,lugar)
 
 
 
