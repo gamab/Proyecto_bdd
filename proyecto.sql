@@ -15,17 +15,17 @@ nombreYApellido VARCHAR(80) NOT NULL,
 fechaNacimiento DATE NOT NULL,
 direccion TEXT NOT NULL,
 telefono VARCHAR(11) NOT NULL,
-puntosCarnet 
+puntosCarnet PUNTOS NOT NULL,
 CONSTRAINT ck_positive CHECK (dni > 0),
-CONSTRAINT pk_dni PRIMARY KEY (dni);
+CONSTRAINT pk_dni PRIMARY KEY (dni)
 );
 
-CREATE TABLE vehiculo(
+CREATE TABLE Vehiculo(
 patente VARCHAR(6),
-tipo 
-marca
-modelo
-ano 
+tipo VARCHAR(30),
+marca T_MARCA,
+modelo VARCHAR(30),
+ano INTEGER,
 CONSTRAINT pk_patente PRIMARY KEY (patente)
 );
 
