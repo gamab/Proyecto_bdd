@@ -28,23 +28,23 @@ direccion TEXT NOT NULL,
 telefono VARCHAR(11) NOT NULL,
 puntosCarnet PUNTOS NOT NULL,
 CONSTRAINT ck_positive CHECK (dni > 0),
-CONSTRAINT pk_dni PRIMARY KEY (dni)
+CONSTRAINT pk_persona PRIMARY KEY (dni)
 );
 
 CREATE TABLE Vehiculo(
-patente VARCHAR(6) NOT NULL,
+nro_patente VARCHAR(6) NOT NULL,
 tipo VARCHAR(30),
 marca T_MARCA,
 modelo VARCHAR(30),
 ano INTEGER,
-CONSTRAINT pk_patente PRIMARY KEY (patente)
+CONSTRAINT pk_vehiculo PRIMARY KEY (nro_patente)
 );
 
 CREATE TABLE Propietario(
-patente VARCHAR(6) NOT NULL,
+nro_patente VARCHAR(6) NOT NULL,
 dni INTEGER NOT NULL,
-CONSTRAINT pk_propietario PRIMARY KEY (patente,dni),
-CONSTRAINT fk_patente_propietario FOREIGN KEY (patente) REFERENCES vehiculo(patente) ON DELETE CASACADE,
+CONSTRAINT pk_propietario PRIMARY KEY (nro_patente,dni),
+CONSTRAINT fk_nro_patente_propietario FOREIGN KEY (nro_patente) REFERENCES vehiculo(nro_patente) ON DELETE CASACADE,
 CONSTRAINT fk_dni_propietario FOREIGN KEY (dni) REFERENCES Persona(dni) ON DELETE CASACADE
 );
 
@@ -53,21 +53,21 @@ codigo INTEGER NOT NULL,
 descripcion TEXT NOT NULL,
 valor FLOAT,
 CONSTRAINT ck_inf_poc CHECK (codigo > 0),
-CONSTRAINT pk_codigo PRIMARY KEY (codigo)
+CONSTRAINT pk_infraccion PRIMARY KEY (codigo)
 );
 
 CREATE TABLE Multa(
-multa
-patente
-codigo_infraccion
+nro_multa INTEGER NOT NULL,
+nro_patente VARCHAR(6) NOT NULL,
+codigo_infraccion INTEGER,
 dni INTEGER NOT NULL,
-hora 
+hora TIME,
 fecha DATE NOT NULL,
-lugar 
-CONSTRAINT pk_multa PRIMARY KEY (multa),
-CONSTRAINT fk_patente_multa FOREIGN KEY (patente) REFERENCES Vehiculo(patente),
+lugar TEXT,
+CONSTRAINT pk_multa PRIMARY KEY (nro_multa),
+CONSTRAINT fk_patente_multa FOREIGN KEY (nro_patente) REFERENCES Vehiculo(nro_patente),
 CONSTRAINT fk_dni_multa FOREIGN KEY (dni) REFERENCES Persona(dni),
-CONSTRAINT fk_codigo_infraccion FOREIGN KEY (codigo_infraccion) REFERENCES Infraccion(codigo)
+CONSTRAINT fk_codigo_infraccion_multa FOREIGN KEY (codigo_infraccion) REFERENCES Infraccion(codigo)
 );
 
 
