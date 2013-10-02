@@ -2,6 +2,10 @@
 
 CAN T RUN BECAUSE OF THIS LINE
 
+--####################
+--## CREATING TYPES ##
+--####################
+
 -- Creacion de un dominio para el puntosCarnet
 CREATE DOMAIN PUNTOS AS SMALLINT
 CHECK (
@@ -10,6 +14,11 @@ CHECK (
 
 -- Creacion del typo T_MARCA que enumera las marcas de vehiculo.
 CREATE TYPE T_MARCA AS ENUM ('FIAT','FORD','RENAULT');
+
+--#####################
+--## CREATING TABLES ##
+--#####################
+
 
 CREATE TABLE Persona(
 dni INTEGER NOT NULL,
