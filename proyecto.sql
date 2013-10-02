@@ -1,5 +1,7 @@
 ﻿-- PROYECTO
 
+CAN T RUN BECAUSE OF THIS LINE
+
 -- Creacion de un dominio para el puntosCarnet
 CREATE DOMAIN PUNTOS AS SMALLINT
 CHECK (
@@ -30,7 +32,7 @@ CONSTRAINT pk_patente PRIMARY KEY (patente)
 );
 
 CREATE TABLE Propietario(
-patente VARCHAR(6),
+patente VARCHAR(6) NOT NULL,
 dni INTEGER NOT NULL,
 CONSTRAINT pk_propietario PRIMARY KEY (patente,dni),
 CONSTRAINT fk_patente_propietario FOREIGN KEY (patente) REFERENCES vehiculo(patente),
@@ -38,10 +40,10 @@ CONSTRAINT fk_dni_propietario FOREIGN KEY (dni) REFERENCES Persona(dni)
 );
 
 CREATE TABLE Infraccion(
-codigo INTEGER NOT NULL
-descripcion TEXT NOT NULL
-valor FLOAT 
-CONSTRAINT ck_inf_poc CHECK (codigo > 0)
+codigo INTEGER NOT NULL,
+descripcion TEXT NOT NULL,
+valor FLOAT,
+CONSTRAINT ck_inf_poc CHECK (codigo > 0),
 CONSTRAINT pk_codigo PRIMARY KEY (codigo)
 );
 
@@ -49,9 +51,9 @@ CREATE TABLE Multa(
 multa
 patente
 codigo_infraccion
-dni INTEGER NOT NULL
+dni INTEGER NOT NULL,
 hora 
-fecha DATE NOT NULL
+fecha DATE NOT NULL,
 lugar 
 CONSTRAINT pk_multa PRIMARY KEY (multa),
 CONSTRAINT fk_patente_multa FOREIGN KEY (patente) REFERENCES Vehiculo(patente),
