@@ -1,4 +1,5 @@
 ﻿-- PROYECTO
+CREATE DATABASE Proyecto;
 
 CAN T RUN BECAUSE OF THIS LINE
 
@@ -88,7 +89,10 @@ VALUES (11111111,'Gabriel Mabille','1992-12-05','Route de Sieuras - 09350 Meras 
 
 -- Vehiculo(*nro_patente,tipo,marca,modelo,ano)
 INSERT INTO Vehiculo
-VALUES ();
+VALUES ('31XZ47','Coche','FORD','Focus',2010),
+('11KH8O','Coche','FIAT','Punto',2008),
+('09KMC5','Moto','RENAULT','K27',2003),
+('583468','Reno de la Navidad','FORD','Pixie', 0001);
 
 -- Propietario(*nro_patente,*dni)
 INSERT INTO Propietario
