@@ -2,9 +2,9 @@
 
 CAN T RUN BECAUSE OF THIS LINE
 
---####################
---## CREATING TYPES ##
---####################
+--#######################
+--## CREACION DE TYPOS ##
+--#######################
 
 -- Creacion de un dominio para el puntosCarnet
 CREATE DOMAIN PUNTOS AS SMALLINT
@@ -15,9 +15,9 @@ CHECK (
 -- Creacion del typo T_MARCA que enumera las marcas de vehiculo.
 CREATE TYPE T_MARCA AS ENUM ('FIAT','FORD','RENAULT');
 
---#####################
---## CREATING TABLES ##
---#####################
+--########################
+--## CREACION DE TABLAS ##
+--########################
 
 
 CREATE TABLE Persona(
@@ -71,6 +71,9 @@ CONSTRAINT fk_codigo_infraccion_multa FOREIGN KEY (codigo_infraccion) REFERENCES
 );
 
 
+--##########################
+--## CREACION DE ARCHIVOS ##
+--##########################
 
 
 
