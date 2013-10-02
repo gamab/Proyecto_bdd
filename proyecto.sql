@@ -59,15 +59,15 @@ CONSTRAINT pk_infraccion PRIMARY KEY (codigo)
 CREATE TABLE Multa(
 nro_multa INTEGER NOT NULL,
 nro_patente VARCHAR(6) NOT NULL,
-codigo_infraccion INTEGER,
+codigo_infraccion INTEGER NOT NULL,
 dni INTEGER NOT NULL,
 hora TIME,
 fecha DATE NOT NULL,
 lugar TEXT,
 CONSTRAINT pk_multa PRIMARY KEY (nro_multa),
-CONSTRAINT fk_patente_multa FOREIGN KEY (nro_patente) REFERENCES Vehiculo(nro_patente),
-CONSTRAINT fk_dni_multa FOREIGN KEY (dni) REFERENCES Persona(dni),
-CONSTRAINT fk_codigo_infraccion_multa FOREIGN KEY (codigo_infraccion) REFERENCES Infraccion(codigo)
+CONSTRAINT fk_patente_multa FOREIGN KEY (nro_patente) REFERENCES Vehiculo(nro_patente) ON DELETE RESTRICT,
+CONSTRAINT fk_dni_multa FOREIGN KEY (dni) REFERENCES Persona(dni) ON DELETE CASCADE,
+CONSTRAINT fk_codigo_infraccion_multa FOREIGN KEY (codigo_infraccion) REFERENCES Infraccion(codigo) ON DELETE CASCADE
 );
 
 
