@@ -117,7 +117,8 @@ VALUES (6100,'Falta de Licencia',1000),
 INSERT INTO Multa
 VALUES (1,'31XZ47',6100, 11111111,'13:25:00','2013-05-12','Rio Cuarto'),
 (2,'11KH8O',6120,33333333,'04:25:00','2013-09-27','Toulouse'),
-(3,'09KMC5',6490,44444444,'20:50:00','2012-12-23','Laponie');
+(3,'09KMC5',6490,44444444,'20:50:00','2012-12-23','Laponie'),
+(4,'11KH8O',6120,33333333,'04:27:00','2007-12-27','Meras');
 
 -- ##########################
 -- ##       CONSULTAS      ##
@@ -127,6 +128,9 @@ VALUES (1,'31XZ47',6100, 11111111,'13:25:00','2013-05-12','Rio Cuarto'),
 -- "Exceso de Velocidad" y aun tienen mas de 10 puntos en su carnet.
 
 -- Personas(dni,nombreYApellido) que fueron sancionadas mas de una vez con la misma infraccion
+SELECT dni,nombreYApellido FROM Persona
+WHERE dni IN (SELECT dni FROM Multa GROUP BY dni HAVING COUNT(codigo_infraccion)>1); 
+
 
 -- Vehiculos que contieron todas las infrecciones cuyo valor superan los 500 pesos.
 
