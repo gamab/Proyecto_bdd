@@ -115,7 +115,9 @@ VALUES (6100,'Falta de Licencia',1000),
 
 -- Multa(*nro_multa,nro_patente,codigo_infraccion,dni,hora,fecha,lugar)
 INSERT INTO Multa
-VALUES ();
+VALUES (1,'31XZ47',6100, 11111111,'13:25:00','2013-05-12','Rio Cuarto'),
+(2,'11KH8O',6120,33333333,'04:25:00','2013-09-27','Toulouse'),
+(3,'09KMC5',6490,44444444,'20:50:00','2012-12-23','Laponie');
 
 
 
