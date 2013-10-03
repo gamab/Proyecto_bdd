@@ -101,9 +101,17 @@ VALUES ('31XZ47',11111111),
 ('09KMC5',33333333),
 ('583468',44444444);
 
+-- http://www.taringa.net/posts/apuntes-y-monografias/12705800/Infracciones-de-Transito-CABA.html
 -- Infraccion(*codigo,descripcion,valor)
 INSERT INTO Infraccion
-VALUES ();
+VALUES (6100,'Falta de Licencia',1000),
+(6120,'Licencia Vencida',300),
+(6170,'No exhibir documentación',1100),
+(6270,'Cinturón de Seguridad',400),
+(6490,'Teléfonos celulares, Mp4, etc',500),
+(6540,'Circular en sentido contrario',5000),
+(7000,'Circular sin casco (motos)',200),
+(7050,'Violar Luz Roja',1200);
 
 -- Multa(*nro_multa,nro_patente,codigo_infraccion,dni,hora,fecha,lugar)
 INSERT INTO Multa
