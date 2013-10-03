@@ -119,5 +119,17 @@ VALUES (1,'31XZ47',6100, 11111111,'13:25:00','2013-05-12','Rio Cuarto'),
 (2,'11KH8O',6120,33333333,'04:25:00','2013-09-27','Toulouse'),
 (3,'09KMC5',6490,44444444,'20:50:00','2012-12-23','Laponie');
 
+-- ##########################
+-- ##       CONSULTAS      ##
+-- ##########################
 
+-- Personas(dni,nombreYApellido,fechaNacimiento) que cometieron la infraccion de
+-- "Exceso de Velocidad" y aun tienen mas de 10 puntos en su carnet.
 
+-- Personas(dni,nombreYApellido) que fueron sancionadas mas de una vez con la misma infraccion
+
+-- Vehiculos que contieron todas las infrecciones cuyo valor superan los 500 pesos.
+
+-- Menores de 25 anos que nunca cometieron la infraccion por "Conducir alcoholizados en motocicleta"
+
+-- Proponer 3 consultas donde 2 de ellas utilicen la clausula Group by
