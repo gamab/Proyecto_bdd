@@ -96,7 +96,10 @@ VALUES ('31XZ47','Coche','FORD','Focus',2010),
 
 -- Propietario(*nro_patente,*dni)
 INSERT INTO Propietario
-VALUES ();
+VALUES ('31XZ47',11111111),
+('11KH8O',22222222),
+('09KMC5',33333333),
+('583468',44444444);
 
 -- Infraccion(*codigo,descripcion,valor)
 INSERT INTO Infraccion
