@@ -103,19 +103,22 @@ VALUES ('31XZ47',11111111),
 
 -- http://www.taringa.net/posts/apuntes-y-monografias/12705800/Infracciones-de-Transito-CABA.html
 -- Infraccion(*codigo,descripcion,valor)
+-- DELETE FROM Infraccion;
 INSERT INTO Infraccion
-VALUES (6100,'Falta de Licencia',1000),
-(6120,'Licencia Vencida',300),
-(6170,'No exhibir documentación',1100),
-(6270,'Cinturón de Seguridad',400),
-(6490,'Teléfonos celulares, Mp4, etc',500),
-(6540,'Circular en sentido contrario',5000),
-(7000,'Circular sin casco (motos)',200),
-(7050,'Violar Luz Roja',1200);
+VALUES (6100,'Falta de Licencia',6),
+(6120,'Licencia Vencida',4),
+(6170,'No exhibir documentación',7),
+(6270,'Cinturón de Seguridad',1),
+(6490,'Teléfonos celulares, Mp4, etc',2),
+(6540,'Circular en sentido contrario',5),
+(7000,'Circular sin casco (motos)',2),
+(7050,'Violar Luz Roja',3),
+(7170,'Exceso de Velocidad',2);
 
 -- Multa(*nro_multa,nro_patente,codigo_infraccion,dni,hora,fecha,lugar)
+-- DELETE FROM Multa;
 INSERT INTO Multa
-VALUES (1,'31XZ47',6100, 11111111,'13:25:00','2013-05-12','Rio Cuarto'),
+VALUES (1,'31XZ47',7170, 11111111,'13:25:00','2013-05-12','Rio Cuarto'),
 (2,'11KH8O',6120,33333333,'04:25:00','2013-09-27','Toulouse'),
 (3,'09KMC5',6490,44444444,'20:50:00','2012-12-23','Laponie'),
 (4,'11KH8O',6120,33333333,'04:27:00','2007-12-27','Meras');
@@ -125,7 +128,10 @@ VALUES (1,'31XZ47',6100, 11111111,'13:25:00','2013-05-12','Rio Cuarto'),
 -- ##########################
 
 -- Personas(dni,nombreYApellido,fechaNacimiento) que cometieron la infraccion de
--- "Exceso de Velocidad" y aun tienen mas de 10 puntos en su carnet.
+-- "Exceso de Velocidad" y aun tienen mas de 5 puntos en su carnet.
+-- /!\ Ejercicio inicial dice 10 puntos
+SELECT dni,nombreYApellido,fechaNacimiento FROM Persona NATURAL JOIN Multa
+WHERE (puntosCarnet >= 5) AND (codigo_infraccion = 7170);
 
 -- Personas(dni,nombreYApellido) que fueron sancionadas mas de una vez con la misma infraccion
 SELECT dni,nombreYApellido FROM Persona
