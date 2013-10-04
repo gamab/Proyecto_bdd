@@ -11,22 +11,23 @@ public class DatabaseProyectoModel {
 			System.out.println("Driver O.K.");
 
 		} catch ( ClassNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
-		Connection connect;
 		try {
+			Connection db;
+			
 			String url = "jdbc:postgresql://localhost:5432/proyecto";
 			String user = "postgres";
 			String passwd = "root";
-			connect = DriverManager.getConnection(url,user,passwd);
-			System.out.println("Connection Succeeded.");
+			db = DriverManager.getConnection(url,user,passwd);
+			System.out.println("Conneccion abierta.");
+			
+			db.close();
+			System.out.println("Conneccion cerrada.");
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
 	}
 
 }
