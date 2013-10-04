@@ -131,6 +131,9 @@ VALUES (1,'31XZ47',6100, 11111111,'13:25:00','2013-05-12','Rio Cuarto'),
 SELECT dni,nombreYApellido FROM Persona
 WHERE dni IN (SELECT dni FROM Multa GROUP BY dni HAVING COUNT(codigo_infraccion)>1); 
 
+SELECT dni,nombreYApellido FROM Persona NATURAL JOIN Multa
+GROUP BY dni
+HAVING COUNT(codigo_infraccion)>1;
 
 -- Vehiculos que contieron todas las infrecciones cuyo valor superan los 500 pesos.
 
