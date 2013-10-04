@@ -152,5 +152,9 @@ WHERE valor >= 500;
 SELECT * FROM Persona NATURAL JOIN (Multa NATURAL JOIN Vehiculo)
 WHERE (codigo_infraccion = 7270) AND (tipo='Moto') AND (date_part('year',age(current_date,fechaNacimiento)) <= 25);
 
+-- Explicaciones : (http://www.postgresql.org/docs/8.2/static/functions-datetime.html)
+-- date_part('year',fecha) da el ano de la fecha
+-- age(current_date,fechaNacimiento) da el tiempo entre la fecha de hoy y una fecha de nacimiento
+
 -- Proponer 3 consultas donde 2 de ellas utilicen la clausula Group by
 
