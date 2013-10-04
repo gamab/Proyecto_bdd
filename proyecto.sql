@@ -142,6 +142,9 @@ GROUP BY dni
 HAVING COUNT(codigo_infraccion)>1;
 
 -- Vehiculos que contieron todas las infrecciones cuyo valor superan los 500 pesos.
+SELECT nro_patente,marca,modelo,Multa.codigo_infraccion,descripcion,valor FROM Vehiculo 
+NATURAL JOIN (Multa JOIN Infraccion ON (Multa.codigo_infraccion = Infraccion.codigo))
+WHERE valor >= 500;
 
 -- Menores de 25 anos que nunca cometieron la infraccion por "Conducir alcoholizados en motocicleta"
 
