@@ -148,6 +148,9 @@ NATURAL JOIN (Multa JOIN Infraccion ON (Multa.codigo_infraccion = Infraccion.cod
 WHERE valor >= 500;
 
 -- Menores de 25 anos que nunca cometieron la infraccion por "Conducir alcoholizados en motocicleta"
+-- SELECT DNI,nombreYApellido,fechaNacimiento FROM Persona 
+SELECT * FROM Persona NATURAL JOIN (Multa NATURAL JOIN Vehiculo)
+WHERE (codigo_infraccion = 7270) AND (tipo='Moto') AND (date_part('year',age(current_date,fechaNacimiento)) <= 25);
 
 -- Proponer 3 consultas donde 2 de ellas utilicen la clausula Group by
 
