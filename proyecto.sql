@@ -113,7 +113,8 @@ VALUES (6100,'Falta de Licencia',1000),
 (6540,'Circular en sentido contrario',5000),
 (7000,'Circular sin casco (motos)',200),
 (7050,'Violar Luz Roja',1200),
-(7170,'Exceso de Velocidad',100);
+(7170,'Exceso de Velocidad',100),
+(7270,'Conducir alcoholizado',300);
 
 -- Multa(*nro_multa,nro_patente,codigo_infraccion,dni,hora,fecha,lugar)
 DELETE FROM Multa;
