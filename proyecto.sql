@@ -160,3 +160,15 @@ WHERE (codigo_infraccion = 7270) AND (tipo = 'Moto') ;
 
 -- Proponer 3 consultas donde 2 de ellas utilicen la clausula Group by
 
+
+-- 4. Realizar un Programa Java que permita :
+--	* Insertar un vehiculo
+--	* Eliminar una persona
+--	* Consultar una multa por su numero
+--	* Listar todas las infracciones
+
+-- Para eso vamos a crear un usuario.
+
+-- Es necessario installar postgres' driver for java JDBC
+-- sudo apt-get install libpostgresql-jdbc-java
+
