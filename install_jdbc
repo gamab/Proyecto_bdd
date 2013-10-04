@@ -1,0 +1,15 @@
+#!/bin/sh
+# First install package
+sudo apt-get install libpostgresql-jdbc-java
+
+#The jar file can be found at :
+/usr/share/java/postgresql.jar
+
+#I am now following http://www.postgresql.org/docs/7.4/static/jdbc.html#JDBC-CLASSPATH
+#In eclipse got to Run Configurations (accessible by the green "Run" button).
+#Go to "Classpath" tab
+#In "classpath :", select menu "Bootstrap Entries"
+#Select button (on the right) "Add External JARs..."
+#Add file /usr/share/java/postgresql.jar
+#Run
+
