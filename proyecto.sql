@@ -119,10 +119,11 @@ VALUES (6100,'Falta de Licencia',1000),
 -- Multa(*nro_multa,nro_patente,codigo_infraccion,dni,hora,fecha,lugar)
 DELETE FROM Multa;
 INSERT INTO Multa
-VALUES (1,'31XZ47',7170, 11111111,'13:25:00','2013-05-12','Rio Cuarto'),
-(2,'11KH8O',6120,33333333,'04:25:00','2013-09-27','Toulouse'),
+VALUES(1,'31XZ47',7050, 11111111,'13:25:00','2013-05-12','Rio Cuarto'),
+(2,'11KH8O',6170,33333333,'04:25:00','2013-09-27','Toulouse'),
 (3,'09KMC5',6490,44444444,'20:50:00','2012-12-23','Laponie'),
-(4,'11KH8O',6120,33333333,'04:27:00','2007-12-27','Meras');
+(4,'11KH8O',7050,33333333,'04:27:00','2007-12-27','Meras'),
+(5,'09KMC5',7170,44444444,'10:20:00','2002-05-23','Narbonne');
 
 -- ##########################
 -- ##       CONSULTAS      ##
@@ -142,10 +143,17 @@ SELECT dni,nombreYApellido FROM Persona NATURAL JOIN Multa
 GROUP BY dni
 HAVING COUNT(codigo_infraccion)>1;
 
--- Vehiculos que contieron todas las infrecciones cuyo valor superan los 500 pesos.
-SELECT nro_patente,marca,modelo,Multa.codigo_infraccion,descripcion,valor FROM Vehiculo 
+-- Vehiculos que contieron todas las infracciones cuyo valor superan los 500 pesos.
+SELECT nro_patente,SUM(valor) FROM Vehiculo 
 NATURAL JOIN (Multa JOIN Infraccion ON (Multa.codigo_infraccion = Infraccion.codigo))
-WHERE valor >= 500;
+WHERE valor >= 500  GROUP BY nro_patente HAVING SUM(valor) > (SELECT SUM(valor) FROM Infraccion WHERE valor >= 500) ;
+
+SELECT SUM(valor) FROM Infraccion WHERE valor >= 500;
+
+SELECT nro_patente,SUM(valor) FROM Vehiculo 
+NATURAL JOIN (Multa JOIN Infraccion ON (Multa.codigo_infraccion = Infraccion.codigo))
+WHERE valor >= 500 GROUP BY nro_patente;
+
 
 -- Menores de 25 anos que nunca cometieron la infraccion por "Conducir alcoholizados en motocicleta"
 SELECT DNI,nombreYApellido,fechaNacimiento FROM Persona
@@ -160,15 +168,7 @@ WHERE (codigo_infraccion = 7270) AND (tipo = 'Moto') ;
 
 -- Proponer 3 consultas donde 2 de ellas utilicen la clausula Group by
 
-
--- 4. Realizar un Programa Java que permita :
---	* Insertar un vehiculo
---	* Eliminar una persona
---	* Consultar una multa por su numero
---	* Listar todas las infracciones
-
--- Para eso vamos a crear un usuario.
-
--- Es necessario installar postgres' driver for java JDBC
--- sudo apt-get install libpostgresql-jdbc-java
+SELECT nro_patente,COUNT(nro_patente) ,SUM(valor) FROM Vehiculo 
+NATURAL JOIN (Multa JOIN Infraccion ON (Multa.codigo_infraccion = Infraccion.codigo))
+GROUP BY nro_patente HAVING SUM(valor) >= COUNT(nro_patente)*500;
 
