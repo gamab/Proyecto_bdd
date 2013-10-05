@@ -184,3 +184,11 @@ SELECT nro_patente,COUNT(nro_patente) ,SUM(valor) FROM Vehiculo
 NATURAL JOIN (Multa JOIN Infraccion ON (Multa.codigo_infraccion = Infraccion.codigo))
 GROUP BY nro_patente HAVING SUM(valor) >= COUNT(nro_patente)*500;
 
+
+-- 4. Realizar un Programa Java que permita :
+--	* Insertar un vehiculo
+--	* Eliminar una persona
+--	* Consultar una multa por su numero
+--	* Listar todas las infracciones
+
+-- Para eso vamos a crear un usuario.
