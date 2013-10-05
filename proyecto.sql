@@ -81,25 +81,32 @@ CONSTRAINT fk_codigo_infraccion_multa FOREIGN KEY (codigo_infraccion) REFERENCES
 -- ##########################
 
 -- Persona(*DNI,nombreYApellido,fechaNacimiento,direccion,telefono,puntosCarnet)
+DELETE FROM Persona;
 INSERT INTO Persona
 VALUES (11111111,'Gabriel Mabille','1992-12-05','Route de Sieuras - 09350 Meras - France','0636122000','10'),
 (22222222,'Justine Compagnon','1993-09-30','10 Allée des Sciences Appliquées - 31400 Toulouse - France','0770141332','10'),
 (33333333,'Brigitte Mabille','1960-04-12','La Grange - Route de Sieuras - 09350 Meras - France','0689865684','10'),
-(44444444,'Papá Noel','280-12-25',' Myra - Distrito de Licia','xxxxxxxxxx','10');
+(44444444,'Papá Noel','280-12-25',' Myra - Distrito de Licia','xxxxxxxxxx','10'),
+(55555555,'Delinquant','1990-06-07','190 - Rue Claude Bertholler - 34090 Montepellier - France','0467563214','1');
+
 
 -- Vehiculo(*nro_patente,tipo,marca,modelo,ano)
+DELETE FROM Vehiculo;
 INSERT INTO Vehiculo
 VALUES ('31XZ47','Coche','FORD','Focus',2010),
 ('11KH8O','Coche','FIAT','Punto',2008),
 ('09KMC5','Moto','RENAULT','K27',2003),
-('583468','Reno de la Navidad','FORD','Pixie', 0001);
+('583468','Reno de la Navidad','FORD','Pixie', 0001),
+('078PC5','Moto','RENAULT','K289',2010);
 
 -- Propietario(*nro_patente,*dni)
+DELETE FROM Propietario;
 INSERT INTO Propietario
 VALUES ('31XZ47',11111111),
 ('11KH8O',22222222),
 ('09KMC5',33333333),
-('583468',44444444);
+('583468',44444444),
+('078PC5',55555555);
 
 -- http://www.taringa.net/posts/apuntes-y-monografias/12705800/Infracciones-de-Transito-CABA.html
 -- Infraccion(*codigo,descripcion,valor)
@@ -123,7 +130,12 @@ VALUES(1,'31XZ47',7050, 11111111,'13:25:00','2013-05-12','Rio Cuarto'),
 (2,'11KH8O',6170,33333333,'04:25:00','2013-09-27','Toulouse'),
 (3,'09KMC5',6490,44444444,'20:50:00','2012-12-23','Laponie'),
 (4,'11KH8O',7050,33333333,'04:27:00','2007-12-27','Meras'),
-(5,'09KMC5',7170,44444444,'10:20:00','2002-05-23','Narbonne');
+(5,'09KMC5',7170,44444444,'10:10:00','2002-05-23','Narbonne'),
+(6,'078PC5',6100,55555555,'17:20:00','2012-04-30','Montpellier'),
+(7,'078PC5',6170,55555555,'18:30:00','2012-05-25','Montpellier'),
+(8,'078PC5',6490,55555555,'19:40:00','2013-01-20','Montpellier'),
+(9,'078PC5',6540,55555555,'20:50:00','2013-05-15','Montpellier'),
+(10,'078PC5',7050,55555555,'22:22:00','2013-09-01','Montpellier');
 
 -- ##########################
 -- ##       CONSULTAS      ##
@@ -146,7 +158,7 @@ HAVING COUNT(codigo_infraccion)>1;
 -- Vehiculos que contieron todas las infracciones cuyo valor superan los 500 pesos.
 SELECT nro_patente,SUM(valor) FROM Vehiculo 
 NATURAL JOIN (Multa JOIN Infraccion ON (Multa.codigo_infraccion = Infraccion.codigo))
-WHERE valor >= 500  GROUP BY nro_patente HAVING SUM(valor) > (SELECT SUM(valor) FROM Infraccion WHERE valor >= 500) ;
+WHERE valor >= 500  GROUP BY nro_patente HAVING SUM(valor) >= (SELECT SUM(valor) FROM Infraccion WHERE valor >= 500) ;
 
 SELECT SUM(valor) FROM Infraccion WHERE valor >= 500;
 
