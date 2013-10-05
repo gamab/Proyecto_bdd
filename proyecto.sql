@@ -230,3 +230,14 @@ ORDER BY SUM(valor) DESC;
 --	* Listar todas las infracciones
 
 -- Para eso vamos a crear un usuario.
+CREATE ROLE programm WITH
+UNENCRYPTED PASSWORD 'programm';
+
+--	* Insertar un vehiculo
+GRANT INSERT ON Vehiculo TO programm;
+--	* Eliminar una persona
+GRANT DELETE ON Persona TO programm;
+--	* Consultar una multa por su numero
+GRANT SELECT Multa.nro_multa ON Multa TO programm;
+--	* Listar todas las infracciones
+GRANT SELECT ON Infraccion TO programm;
