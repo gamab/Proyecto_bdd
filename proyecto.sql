@@ -97,7 +97,8 @@ VALUES ('31XZ47','Coche','FORD','Focus',2010),
 ('11KH8O','Coche','FIAT','Punto',2008),
 ('09KMC5','Moto','RENAULT','K27',2003),
 ('583468','Reno de la Navidad','FORD','Pixie', 0001),
-('078PC5','Moto','RENAULT','K289',2010);
+('078PC5','Moto','RENAULT','K289',2010),
+('123ABC','Moto','FIAT','K290',2013);
 
 -- Propietario(*nro_patente,*dni)
 DELETE FROM Propietario;
@@ -106,7 +107,8 @@ VALUES ('31XZ47',11111111),
 ('11KH8O',22222222),
 ('09KMC5',33333333),
 ('583468',44444444),
-('078PC5',55555555);
+('078PC5',55555555),
+('123ABC',11111111);
 
 -- http://www.taringa.net/posts/apuntes-y-monografias/12705800/Infracciones-de-Transito-CABA.html
 -- Infraccion(*codigo,descripcion,valor)
@@ -178,11 +180,11 @@ JOIN Infraccion ON (Multa.codigo_infraccion = Infraccion.codigo);
 SELECT nro_patente,COUNT(DISTINCT codigo_infraccion) FROM Multa 
 JOIN Infraccion ON (Multa.codigo_infraccion = Infraccion.codigo)
 GROUP BY (nro_patente);
--- Quien tiene mas que el numero de multas que superan 500 pesos
+-- Quien tiene el numero de multas que superan 500 pesos
 SELECT nro_patente,COUNT(DISTINCT codigo_infraccion) FROM Multa 
 JOIN Infraccion ON (Multa.codigo_infraccion = Infraccion.codigo)
 GROUP BY (nro_patente)
-HAVING COUNT(codigo_infraccion) = (SELECT COUNT(*) FROM Infraccion WHERE valor >= 500);
+HAVING COUNT(DISTINCT codigo_infraccion) = (SELECT COUNT(*) FROM Infraccion WHERE valor >= 500);
 
 
 -- Menores de 25 anos que nunca cometieron la infraccion por "Conducir alcoholizados en motocicleta"
@@ -198,10 +200,28 @@ WHERE (codigo_infraccion = 7270) AND (tipo = 'Moto') ;
 
 -- Proponer 3 consultas donde 2 de ellas utilicen la clausula Group by
 
+--0) ??
 SELECT nro_patente,COUNT(nro_patente) ,SUM(valor) FROM Vehiculo 
 NATURAL JOIN (Multa JOIN Infraccion ON (Multa.codigo_infraccion = Infraccion.codigo))
 GROUP BY nro_patente HAVING SUM(valor) >= COUNT(nro_patente)*500;
 
+--1) Proprietarios que tienen la misma edad que sus vehiculos.
+SELECT Persona.*,Vehiculo.* FROM Persona JOIN (Propietario NATURAL JOIN Vehiculo)
+ON (Persona.DNI = Propietario.DNI)
+WHERE (date_part('year',age(current_date,fechaNacimiento)) = Vehiculo.ano);
+
+--2) Proprietarios que tienen mas de un vehiculo
+--y cuantos vehiculos tienen 
+SELECT dni,COUNT(DISTINCT nro_patente) FROM Propietario NATURAL JOIN Vehiculo
+GROUP BY (dni)
+HAVING (COUNT(DISTINCT nro_patente) > 1)
+ORDER BY COUNT(DISTINCT nro_patente) DESC;
+
+--3) Ordenar personas por dinero pagado en multas
+SELECT nombreYApellido,SUM(valor) FROM Persona NATURAL JOIN
+(Multa JOIN Infraccion ON (Multa.codigo_infraccion = Infraccion.codigo))
+GROUP BY (dni)
+ORDER BY SUM(valor) DESC;
 
 -- 4. Realizar un Programa Java que permita :
 --	* Insertar un vehiculo
