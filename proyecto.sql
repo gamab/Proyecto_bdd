@@ -135,7 +135,8 @@ VALUES(1,'31XZ47',7050, 11111111,'13:25:00','2013-05-12','Rio Cuarto'),
 (7,'078PC5',6170,55555555,'18:30:00','2012-05-25','Montpellier'),
 (8,'078PC5',6490,55555555,'19:40:00','2013-01-20','Montpellier'),
 (9,'078PC5',6540,55555555,'20:50:00','2013-05-15','Montpellier'),
-(10,'078PC5',7050,55555555,'22:22:00','2013-09-01','Montpellier');
+(10,'078PC5',7050,55555555,'22:22:00','2013-09-01','Montpellier'),
+(11,'078PC5',7050,55555555,'22:23:00','2013-09-01','Montpellier');
 
 -- ##########################
 -- ##       CONSULTAS      ##
@@ -165,6 +166,23 @@ SELECT SUM(valor) FROM Infraccion WHERE valor >= 500;
 SELECT nro_patente,SUM(valor) FROM Vehiculo 
 NATURAL JOIN (Multa JOIN Infraccion ON (Multa.codigo_infraccion = Infraccion.codigo))
 WHERE valor >= 500 GROUP BY nro_patente;
+
+-- Otra solucion
+-- cuantas infracciones hay con valor que supera 500 pesos?
+SELECT COUNT(*) FROM Infraccion
+WHERE valor >= 500;
+-- Quien tiene multas?
+SELECT nro_patente,codigo_infraccion,valor FROM Multa 
+JOIN Infraccion ON (Multa.codigo_infraccion = Infraccion.codigo);
+-- Cuantas differentes tienen cada uno?
+SELECT nro_patente,COUNT(DISTINCT codigo_infraccion) FROM Multa 
+JOIN Infraccion ON (Multa.codigo_infraccion = Infraccion.codigo)
+GROUP BY (nro_patente);
+-- Quien tiene mas que el numero de multas que superan 500 pesos
+SELECT nro_patente,COUNT(DISTINCT codigo_infraccion) FROM Multa 
+JOIN Infraccion ON (Multa.codigo_infraccion = Infraccion.codigo)
+GROUP BY (nro_patente)
+HAVING COUNT(codigo_infraccion) = (SELECT COUNT(*) FROM Infraccion WHERE valor >= 500);
 
 
 -- Menores de 25 anos que nunca cometieron la infraccion por "Conducir alcoholizados en motocicleta"
