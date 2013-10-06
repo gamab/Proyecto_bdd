@@ -236,8 +236,15 @@ UNENCRYPTED PASSWORD 'programm';
 --	* Insertar un vehiculo
 GRANT INSERT ON Vehiculo TO programm;
 --	* Eliminar una persona
-GRANT DELETE ON Persona TO programm;
+GRANT SELECT,DELETE ON Persona TO programm;
 --	* Consultar una multa por su numero
-GRANT SELECT Multa.nro_multa ON Multa TO programm;
+-- GRANT SELECT (nro_multa) ON Multa TO programm;
+GRANT SELECT ON Multa TO programm;
 --	* Listar todas las infracciones
 GRANT SELECT ON Infraccion TO programm;
+
+-- Borrar todos los privilegios
+REVOKE ALL ON Vehiculo FROM programm;
+REVOKE ALL ON Persona FROM programm;
+REVOKE ALL ON Multa FROM programm;
+REVOKE ALL ON Infraccion FROM programm;
