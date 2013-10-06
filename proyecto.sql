@@ -86,7 +86,7 @@ INSERT INTO Persona
 VALUES (11111111,'Gabriel Mabille','1992-12-05','Route de Sieuras - 09350 Meras - France','0636122000','10'),
 (22222222,'Justine Compagnon','1993-09-30','10 Allée des Sciences Appliquées - 31400 Toulouse - France','0770141332','10'),
 (33333333,'Brigitte Mabille','1960-04-12','La Grange - Route de Sieuras - 09350 Meras - France','0689865684','10'),
-(44444444,'Papá Noel','280-12-25',' Myra - Distrito de Licia','xxxxxxxxxx','10'),
+(44444444,'Papá Noel','280-12-25','Myra - Distrito de Licia','xxxxxxxxxx','10'),
 (55555555,'Delinquant','1990-06-07','190 - Rue Claude Bertholler - 34090 Montepellier - France','0467563214','1');
 
 
