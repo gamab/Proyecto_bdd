@@ -55,7 +55,7 @@ public class DatabaseProyectoModel {
 			//Execucion de una consuta Delete sobre Persona
 			result2 = state.executeUpdate(delete);
 			//Mostrar por la pantalla la respuesta
-			System.out.println(delete + " -> " + printDeleteResult(result2));
+			System.out.println(delete + " -> " + deleteResultToString(result2));
 			
 			//Creacion del String de consulta
 			select = "SELECT * FROM Persona";
@@ -178,7 +178,20 @@ public class DatabaseProyectoModel {
 
 	
 	//Mostrar el resultado de un delete
-	public static String printDeleteResult(int result) {
+	public static void printDeleteResult(int result) {
+		if (result==0) {
+			System.out.println("Row doesn't exist");
+		}
+		else if (result==1) {
+			System.out.println("Row deleted");
+		}
+		else {
+			System.out.println("Erreur " + result + " during delete");
+		}
+	}
+	
+	//Convert el resultado de un delete en un String
+	public static String deleteResultToString(int result) {
 		if (result==0) {
 			return "Row doesn't exist";
 		}
