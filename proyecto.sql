@@ -231,6 +231,7 @@ ORDER BY SUM(valor) DESC;
 
 -- Para eso vamos a crear un usuario.
 CREATE ROLE programm WITH
+LOGIN
 UNENCRYPTED PASSWORD 'programm';
 
 --	* Insertar un vehiculo
@@ -243,8 +244,9 @@ GRANT SELECT ON Multa TO programm;
 --	* Listar todas las infracciones
 GRANT SELECT ON Infraccion TO programm;
 
--- Borrar todos los privilegios
+-- Borrar todos los privilegios y el role
 REVOKE ALL ON Vehiculo FROM programm;
 REVOKE ALL ON Persona FROM programm;
 REVOKE ALL ON Multa FROM programm;
 REVOKE ALL ON Infraccion FROM programm;
+DROP ROLE programm;
