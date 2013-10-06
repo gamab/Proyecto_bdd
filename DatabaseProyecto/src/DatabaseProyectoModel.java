@@ -28,8 +28,8 @@ public class DatabaseProyectoModel {
 			Connection db;
 
 			String url = "jdbc:postgresql://localhost:5432/proyecto";
-			String user = "postgres";
-			String passwd = "root";
+			String user = "programm";
+			String passwd = "programm";
 			db = DriverManager.getConnection(url,user,passwd);
 			System.out.println("Conneccion abierta.");
 
