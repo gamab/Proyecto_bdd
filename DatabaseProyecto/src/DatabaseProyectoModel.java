@@ -40,11 +40,31 @@ public class DatabaseProyectoModel {
 			Statement state = db.createStatement();
 			//Creacion de la respuesta de la db
 			ResultSet result = null;
-			//Execucion de una consulta
-			result = state.executeQuery("SELECT * FROM Persona");
+			//Creacion del String de consulta
+			String select = "SELECT * FROM Persona";
+			//Execucion de una consulta Select sobre Persona
+			result = state.executeQuery(select);
 			//Mostrar por la pantalla la respuesta
+			System.out.println(select + " -> ");
 			printSelectResult(result);
 
+			//Creacion de la variable de resultado
+			int result2;
+			//Creacion del String de consulta
+			String delete = "DELETE FROM Persona WHERE (DNI=22222222)";
+			//Execucion de una consuta Delete sobre Persona
+			result2 = state.executeUpdate(delete);
+			//Mostrar por la pantalla la respuesta
+			System.out.println(delete + " -> " + printDeleteResult(result2));
+			
+			//Creacion del String de consulta
+			select = "SELECT * FROM Persona";
+			//Execucion de una consulta Select sobre Persona
+			result = state.executeQuery(select);
+			//Mostrar por la pantalla la respuesta
+			System.out.println(select + " -> ");
+			printSelectResult(result);
+			
 			//-----
 			//CLOSE
 			//-----
@@ -156,4 +176,17 @@ public class DatabaseProyectoModel {
 		}
 	}
 
+	
+	//Mostrar el resultado de un delete
+	public static String printDeleteResult(int result) {
+		if (result==0) {
+			return "Row doesn't exist";
+		}
+		else if (result==1) {
+			return "Row deleted";
+		}
+		else {
+			return "Erreur " + result + " during delete";
+		}
+	}
 }
