@@ -2,6 +2,7 @@ package ar.proyecto.gui;
 
 import java.awt.Graphics;
 
+import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
@@ -20,6 +21,7 @@ public class MiddlePanelInsert extends MiddlePanel {
 
 	private JComboBox cboxMarca;
 	
+	private JButton ok;
 	
 	//constructor
 	public MiddlePanelInsert() {
