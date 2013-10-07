@@ -12,6 +12,9 @@ public class TopPanel extends JPanel {
 		protected int height;
 		protected int width;
 		
+	//Para communicar con la gui
+		private MainWindow gui;	
+		
 		public TopPanel() {
 			
 		}
