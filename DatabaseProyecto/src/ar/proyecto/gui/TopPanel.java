@@ -47,4 +47,8 @@ public class TopPanel extends JPanel {
 			this.height = height;
 			this.width = width;
 		}
+		
+		public void setGui(MainWindow gui) {
+			this.gui = gui;
+		}
 }
