@@ -10,15 +10,15 @@ import ar.proyecto.controller.RequestType;
 public class MainWindow extends JFrame {
 	
 	//Para construir la ventana
-	TopPanel panelTop;
-	MiddlePanel panelMiddle;
-	BottomPanel panelBottom;
-	String title;
-	int width;
-	int height;
+	private TopPanel panelTop;
+	private MiddlePanel panelMiddle;
+	private BottomPanel panelBottom;
+	private String title;
+	private int width;
+	private int height;
 	
 	//Para comunicar con el modelo
-	Controller controller;
+	private Controller controller;
 	
 	
 	//-------------------------------------

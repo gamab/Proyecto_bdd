@@ -5,9 +5,9 @@ import ar.proyecto.model.DatabaseConnection;
 
 public class Controller {
 	//Para utilizar el modelo
-	DatabaseConnection model;
+	private DatabaseConnection dcModel;
 	//Para modificar la GUI
-	MainWindow gui;
+	private MainWindow gui;
 	
 	
 	//Creador
