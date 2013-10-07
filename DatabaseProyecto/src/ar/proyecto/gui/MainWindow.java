@@ -33,6 +33,10 @@ public class MainWindow extends JFrame {
 	public void setMiddlePanel(MiddlePanel panel) {
 		
 	}
+	//Para cambiar el panel del medio
+	public void setMiddlePanel(RequestType type) {
+		
+	}
 	
 	//Para mostrar un resultado en el panel de abajo
 	public void setResult(String result) {
