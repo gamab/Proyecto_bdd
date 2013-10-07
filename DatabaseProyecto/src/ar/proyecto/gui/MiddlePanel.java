@@ -5,7 +5,7 @@ import java.awt.Graphics;
 
 import javax.swing.JPanel;
 
-public abstract class MiddlePanel extends JPanel {
+public class MiddlePanel extends JPanel {
 	//Para crear el panel
 	protected Color backgroundColor;
 	protected int height;
@@ -14,11 +14,18 @@ public abstract class MiddlePanel extends JPanel {
 	//Para communicar con la gui
 	private MainWindow gui;	
 	
-	protected MiddlePanel() {
-		
+	public MiddlePanel() {
+		super();
+		this.height = 100;
+		this.width = 800;
+		this.setSize(height, width);
+		backgroundColor = Color.CYAN;
 	}
 
-	protected abstract void paintComponent(Graphics g);
+	public void paintComponent(Graphics g) {
+		g.setColor(backgroundColor);
+		g.fillRect(0, 0, width, height);
+	}
 	
 	public Color getBackgroundColor() {
 		return backgroundColor;
