@@ -12,11 +12,13 @@ public class Controller {
 	
 	//Creador
 	public Controller() {
-		
+		gui = new MainWindow();
+		dcModel = new DatabaseConnection();
 	}
 	
 	//Executar una consulta y modificar la gui
 	public void sendRequestToModelAndUpdateGui(String request, RequestType type) {
 		
 	}
+
 }
