@@ -10,7 +10,7 @@ public class BottomPanelTable extends BottomPanel{
 
 	private JLabel title;
 	private ResultSet result;
-	private JTable table_result;
+	private JTable tableResult;
 
 
 	@Override

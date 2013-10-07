@@ -23,8 +23,6 @@ public class MiddlePanelInsert extends MiddlePanel {
 	
 	private JButton ok;
 	
-	//Para communicar con la gui
-	private MainWindow gui;
 	
 	
 	//constructor
@@ -38,12 +36,5 @@ public class MiddlePanelInsert extends MiddlePanel {
 		
 	}
 
-	public MainWindow getGui() {
-		return gui;
-	}
-
-	public void setGui(MainWindow gui) {
-		this.gui = gui;
-	}
 
 }

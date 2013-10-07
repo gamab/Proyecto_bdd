@@ -11,6 +11,9 @@ public abstract class MiddlePanel extends JPanel {
 	protected int height;
 	protected int width;
 	
+	//Para communicar con la gui
+	private MainWindow gui;	
+	
 	protected MiddlePanel() {
 		
 	}
@@ -44,5 +47,9 @@ public abstract class MiddlePanel extends JPanel {
 	public void setSize(int height, int width) {
 		this.height = height;
 		this.width = width;
+	}
+	
+	public void setGui(MainWindow gui) {
+		this.gui = gui;
 	}
 }

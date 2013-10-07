@@ -15,9 +15,6 @@ public class MiddlePanelSelect extends MiddlePanel {
 		
 	private JButton ok;
 
-	//Para communicar con la gui
-	private MainWindow gui;
-
 
 	//constructor
 	public MiddlePanelSelect() {
@@ -28,14 +25,6 @@ public class MiddlePanelSelect extends MiddlePanel {
 	public void paintComponent(Graphics g) {
 		// TODO Auto-generated method stub
 
-	}
-
-	public MainWindow getGui() {
-		return gui;
-	}
-
-	public void setGui(MainWindow gui) {
-		this.gui = gui;
 	}
 
 }
