@@ -1,8 +1,12 @@
 package ar.proyecto.gui;
 
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
 import java.sql.ResultSet;
 
 import javax.swing.JFrame;
+import javax.swing.JPanel;
 
 import ar.proyecto.controller.Controller;
 import ar.proyecto.controller.RequestType;
@@ -26,7 +30,23 @@ public class MainWindow extends JFrame {
 	//-------------------------------------
 	//Constructor
 	public MainWindow() {
+		title = new String("BDD Proyecto");
+		width = 800;
+		height = 600;
+		this.setTitle(title);
+		this.setSize(new Dimension(width,height));
+		this.getContentPane().setBackground(Color.WHITE);
 		
+		panelTop = new TopPanel();
+		panelBottom = new BottomPanelString();
+		
+		this.getContentPane().setLayout(new BorderLayout());
+		this.getContentPane().add(panelTop,BorderLayout.NORTH);
+		this.getContentPane().add(panelTop,BorderLayout.SOUTH);
+		
+		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+		this.setResizable(false);
+		this.setVisible(true);
 	}
 	
 	//Para cambiar el panel del medio
