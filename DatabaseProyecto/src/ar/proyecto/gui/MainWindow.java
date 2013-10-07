@@ -38,11 +38,13 @@ public class MainWindow extends JFrame {
 		this.getContentPane().setBackground(Color.WHITE);
 		
 		panelTop = new TopPanel();
+		panelMiddle = new MiddlePanel();
 		panelBottom = new BottomPanelString();
 		
 		this.getContentPane().setLayout(new BorderLayout());
 		this.getContentPane().add(panelTop,BorderLayout.NORTH);
-		this.getContentPane().add(panelTop,BorderLayout.SOUTH);
+		this.getContentPane().add(panelMiddle,BorderLayout.CENTER);
+		this.getContentPane().add(panelBottom,BorderLayout.SOUTH);
 		
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.setResizable(false);
