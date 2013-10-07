@@ -5,7 +5,7 @@ import java.awt.Graphics;
 
 import javax.swing.JPanel;
 
-public class BottomPanel extends JPanel {
+public abstract class BottomPanel extends JPanel {
 	
 	
 	//Para crear el panel
@@ -17,8 +17,7 @@ public class BottomPanel extends JPanel {
 			
 		}
 
-		public void paintComponent(Graphics g){
-		}
+		protected abstract void paintComponent(Graphics g);
 		
 		public Color getBackgroundColor() {
 			return backgroundColor;
