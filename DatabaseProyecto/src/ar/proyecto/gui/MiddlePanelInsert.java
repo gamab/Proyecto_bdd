@@ -30,12 +30,6 @@ public class MiddlePanelInsert extends MiddlePanel {
 	public MiddlePanelInsert() {
 		super();		
 	}
-	
-	@Override
-	public void paintComponent(Graphics g) {
-		// TODO Auto-generated method stub
-		
-	}
 
 
 }

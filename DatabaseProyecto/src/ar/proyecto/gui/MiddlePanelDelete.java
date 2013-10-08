@@ -37,12 +37,4 @@ public class MiddlePanelDelete extends MiddlePanel {
 		super();		
 	}
 
-	@Override
-	public void paintComponent(Graphics g) {
-		// TODO Auto-generated method stub
-
-	}
-
-
-
 }

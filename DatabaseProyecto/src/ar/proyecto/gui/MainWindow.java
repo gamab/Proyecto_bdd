@@ -14,9 +14,13 @@ import ar.proyecto.controller.RequestType;
 public class MainWindow extends JFrame {
 	
 	//Para construir la ventana
-	private TopPanel panelTop;
-	private MiddlePanel panelMiddle;
-	private BottomPanel panelBottom;
+	private JPanel panelTop;
+	private int heightpt = 120;
+	private JPanel panelMiddle;
+	private int heightpm = 120;
+	private JPanel panelBottom;
+	private int heightpb = 360;
+	private JPanel panelContent;
 	private String title;
 	private int width;
 	private int height;
@@ -30,24 +34,37 @@ public class MainWindow extends JFrame {
 	//-------------------------------------
 	//Constructor
 	public MainWindow() {
+		super();
 		title = new String("BDD Proyecto");
 		width = 800;
 		height = 600;
 		this.setTitle(title);
 		this.setSize(new Dimension(width,height));
-		this.getContentPane().setBackground(Color.WHITE);
+		this.setLocationRelativeTo(null);
+		
+		
+		panelContent = new JPanel();
+		panelContent.setPreferredSize(new Dimension(width, height));
+		panelContent.setBackground(Color.white);
+		panelContent.setLayout(new BorderLayout());
+
 		
 		panelTop = new TopPanel();
+		panelTop.setPreferredSize(new Dimension(width,heightpt));
 		panelMiddle = new MiddlePanel();
+		panelMiddle.setPreferredSize(new Dimension(width,heightpm));
 		panelBottom = new BottomPanelString();
+		panelBottom.setPreferredSize(new Dimension(width,heightpb));
+
+		panelContent.add(panelTop,BorderLayout.NORTH);
+		panelContent.add(panelMiddle,BorderLayout.CENTER);
+		panelContent.add(panelBottom,BorderLayout.SOUTH);
 		
-		this.getContentPane().setLayout(new BorderLayout());
-		this.getContentPane().add(panelTop,BorderLayout.NORTH);
-		this.getContentPane().add(panelMiddle,BorderLayout.CENTER);
-		this.getContentPane().add(panelBottom,BorderLayout.SOUTH);
 		
+		this.setContentPane(panelContent);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.setResizable(false);
+		this.pack();
 		this.setVisible(true);
 	}
 	
