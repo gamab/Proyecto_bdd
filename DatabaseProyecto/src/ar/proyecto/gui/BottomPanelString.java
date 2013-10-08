@@ -13,7 +13,7 @@ public class BottomPanelString extends JPanel {
 
 	public BottomPanelString() {
 		super();
-		this.setBackground(Color.YELLOW);
+		this.setBackground(new Color(Integer.parseInt("ffece3",16)));
 		this.setBorder(BorderFactory.createTitledBorder("Result"));
 		this.setVisible(true);
 	}

@@ -21,4 +21,8 @@ public class MiddlePanel extends JPanel {
 	public void setGui(MainWindow gui) {
 		this.gui = gui;
 	}
+	
+	public MainWindow getGui() {
+		return gui;
+	}
 }

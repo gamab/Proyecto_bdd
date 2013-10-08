@@ -51,7 +51,8 @@ public class MainWindow extends JFrame {
 		
 		panelTop = new TopPanel();
 		panelTop.setPreferredSize(new Dimension(width,heightpt));
-		panelMiddle = new MiddlePanel();
+		panelMiddle = new MiddlePanelInsert();
+		((MiddlePanel) panelMiddle).setGui(this);
 		panelMiddle.setPreferredSize(new Dimension(width,heightpm));
 		panelBottom = new BottomPanelString();
 		panelBottom.setPreferredSize(new Dimension(width,heightpb));
@@ -70,7 +71,8 @@ public class MainWindow extends JFrame {
 	
 	//Para cambiar el panel del medio
 	public void setMiddlePanel(MiddlePanel panel) {
-		
+		panelMiddle = panel;
+		panelMiddle.revalidate();
 	}
 	//Para cambiar el panel del medio
 	public void setMiddlePanel(RequestType type) {
