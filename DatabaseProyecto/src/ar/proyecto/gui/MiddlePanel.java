@@ -14,7 +14,7 @@ public class MiddlePanel extends JPanel {
 	public MiddlePanel() {
 		super();
 		this.setBorder(BorderFactory.createTitledBorder("Command"));
-		this.setBackground(Color.CYAN);
+		this.setBackground(new Color(Integer.parseInt("fff2e3",16)));
 		this.setVisible(true);
 	}
 	

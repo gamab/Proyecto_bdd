@@ -1,7 +1,6 @@
 package ar.proyecto.gui;
 
 import java.awt.Color;
-import java.awt.Graphics;
 
 import javax.swing.JPanel;
 
@@ -12,6 +11,7 @@ public class TopPanel extends JPanel {
 		
 		public TopPanel() {
 			super();
+			this.setBackground(new Color(Integer.parseInt("fdffe3",16)));
 		}
 
 		public void setGui(MainWindow gui) {
