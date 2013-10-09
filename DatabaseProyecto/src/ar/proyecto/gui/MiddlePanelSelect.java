@@ -10,8 +10,8 @@ import javax.swing.JFormattedTextField;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import ar.proyecto.controller.ActionSelectCbox;
-import ar.proyecto.controller.ActionSelectOk;
+import ar.proyecto.controller.ActionMiddlePanelSelectCbox;
+import ar.proyecto.controller.ActionMiddlePanelSelectOk;
 
 public class MiddlePanelSelect extends MiddlePanel {
 	private JLabel from;
@@ -49,9 +49,9 @@ public class MiddlePanelSelect extends MiddlePanel {
 		
 		String[] cb = {"Infraccion","Multa"};
 		cbTable = new JComboBox(cb);
-		cbTable.setAction(new ActionSelectCbox(this,centralPanel));
+		cbTable.setAction(new ActionMiddlePanelSelectCbox(this,centralPanel));
 		
-		ok = new JButton(new ActionSelectOk(this,"OK"));
+		ok = new JButton(new ActionMiddlePanelSelectOk(gui,nroMulta,cbTable,"OK"));
 		
 		this.add(from);
 		this.add(cbTable);
@@ -76,15 +76,5 @@ public class MiddlePanelSelect extends MiddlePanel {
 
 	public String getSPaneFilled() {
 		return sPaneFilled;
-	}
-
-	public JComboBox getCbTable() {
-		return cbTable;
-	}
-
-	public JFormattedTextField getNroMulta() {
-		return nroMulta;
-	}
-	
-	
+	}	
 }
