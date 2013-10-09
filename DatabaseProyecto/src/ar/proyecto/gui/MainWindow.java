@@ -92,7 +92,7 @@ public class MainWindow extends JFrame {
 			setMiddlePanel(new MiddlePanelInsert(this));
 			break;
 		case DELETE :
-			setMiddlePanel(new MiddlePanelDelete());
+			setMiddlePanel(new MiddlePanelDelete(this));
 			break;
 		}
 			
