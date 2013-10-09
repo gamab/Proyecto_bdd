@@ -1,5 +1,6 @@
 package ar.proyecto.gui;
 
+import java.awt.BorderLayout;
 import java.awt.CardLayout;
 import java.text.NumberFormat;
 
@@ -19,16 +20,21 @@ public class MiddlePanelSelect extends MiddlePanel {
 	private JFormattedTextField nroMulta;
 	private JPanel centralPanel;
 	private JPanel centralPanelEmpty;
+	private JPanel centralPanelFilled;
+	private JPanel content;
 	private final static String sPaneEmpty = new String("Empty Pannel");
 	private final static String sPaneFilled = new String("Filled Pannel");
-	private JPanel centralPanelFilled;
 	private int widthpc = 400;
 		
 	private JButton ok;
 	
 	//constructor
 	public MiddlePanelSelect() {
-		super();		
+		super();
+		this.setLayout(new BorderLayout());
+		this.content = new JPanel();
+		this.content.setBackground(this.getBackground());
+		
 		from = new JLabel("FROM TABLE :");
 		
 		centralPanel = new JPanel();
@@ -50,10 +56,11 @@ public class MiddlePanelSelect extends MiddlePanel {
 		
 		ok = new JButton(new ActionSelectOk(this,"OK"));
 		
-		this.add(from);
-		this.add(cbTable);
-		this.add(centralPanel);
-		this.add(ok);
+		this.content.add(from);
+		this.content.add(cbTable);
+		this.content.add(centralPanel);
+		this.content.add(ok);
+		this.add(content,BorderLayout.WEST);
 	}
 
 	private void initCentralPanelEmpty() {
