@@ -10,6 +10,8 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.text.MaskFormatter;
 
+import ar.proyecto.controller.ActionInsert;
+
 public class MiddlePanelDelete extends MiddlePanel {
 	private JLabel into;
 
@@ -39,20 +41,20 @@ public class MiddlePanelDelete extends MiddlePanel {
 		super(gui);
 		//Inicializar los Labeles
 
-		fromPersona = new JLabel("From Persona");
-		where = new JLabel("Where");
-		dni = new JLabel("dni");
-		nombreYApellido = new JLabel("nombre y apellido");	
-		fechaDeNacimiento = new JLabel("fecha de nacimiento");
-		direccion = new JLabel("direccion");	
-		telefono = new JLabel("telefono");
-		puntosCarnet = new JLabel("punto carnet");
+		fromPersona = new JLabel("FROM Persona");
+		where = new JLabel("WHERE");
+		dni = new JLabel("Dni");
+		nombreYApellido = new JLabel("Nombre y Apellido");	
+		fechaDeNacimiento = new JLabel("Fecha de Nacimiento");
+		direccion = new JLabel("Direccion");	
+		telefono = new JLabel("Telefono");
+		puntosCarnet = new JLabel("Punto Carnet");
 		
 		//Inicializar los textFields
 		txtDni = new JFormattedTextField(NumberFormat.getIntegerInstance());
 		txtDni.setColumns(5);
 		txtNombreYApellido = new JTextField();
-		txtNombreYApellido.setColumns(80);
+		txtNombreYApellido.setColumns(35);
 		try {
 			txtFechaDeNacimiento = new JFormattedTextField( new MaskFormatter("##'-##'-####"));
 		} catch (ParseException e) {
@@ -60,27 +62,34 @@ public class MiddlePanelDelete extends MiddlePanel {
 			e.printStackTrace();
 			txtFechaDeNacimiento = new JFormattedTextField();
 		}		
-		txtFechaDeNacimiento.setColumns(10);
+		txtFechaDeNacimiento.setColumns(7);
 		txtDireccion = new JTextField();
-		txtDireccion.setColumns(30); 
+		txtDireccion.setColumns(40); 
 		txtTelefono = new JTextField();	
 		txtTelefono.setColumns(11);
 		txtPuntosCarnet = new JFormattedTextField(NumberFormat.getIntegerInstance());
 		txtPuntosCarnet.setColumns(2);
 		
+		//Inicializar el Button
+		ok = new JButton("OK");
+		
 		//Agregar todo al panel
-		this.setLayout(new FlowLayout());
-		this.add(into);
+		this.setLayout(new FlowLayout(FlowLayout.LEFT));
+		this.add(fromPersona);
+		this.add(where);
 		this.add(dni);
-		this.add(txtNombreYApellido);
 		this.add(txtDni);
+		this.add(nombreYApellido);
+		this.add(txtNombreYApellido);
 		this.add(direccion);
 		this.add(txtDireccion);
+		this.add(fechaDeNacimiento);
 		this.add(txtFechaDeNacimiento);
 		this.add(telefono);
 		this.add(txtTelefono);
 		this.add(puntosCarnet);
 		this.add(txtPuntosCarnet);
+		this.add(ok);
 	}
 		
 		public JFormattedTextField getTxtDni() {
