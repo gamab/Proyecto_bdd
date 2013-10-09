@@ -15,11 +15,11 @@ public class MainWindow extends JFrame {
 	
 	//Para construir la ventana
 	private JPanel panelTop;
-	private int heightpt = 70;
+	private int heightpt = 30;
 	private JPanel panelMiddle;
-	private int heightpm = 130;
+	private int heightpm = 70;
 	private JPanel panelBottom;
-	private int heightpb = 400;
+	private int heightpb = 500;
 	private JPanel panelContent;
 	private String title;
 	private int width;
