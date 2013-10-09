@@ -32,15 +32,13 @@ public class Controller {
 		}
 		//si el request type esta insert
 		else if (type == RequestType.INSERT){
-			dcModel.executeInsert(request);
-			result = dcModel.executeSelect(request);
+			result = dcModel.executeInsert(request);;
 			System.out.println("In Controller : sendRequestToModelAndUpdateGui executed an INSERT ");
 			gui.setResult(result);
 		}
 		//si el request type esta delete
 		else if (type == RequestType.DELETE){
-			dcModel.executeDelete(request);
-			result = dcModel.executeSelect(request);
+			result = dcModel.executeDelete(request);
 			System.out.println("In Controller : sendRequestToModelAndUpdateGui executed an DELETE ");
 			gui.setResult(result);
 		}
