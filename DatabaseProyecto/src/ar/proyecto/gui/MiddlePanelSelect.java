@@ -1,8 +1,6 @@
 package ar.proyecto.gui;
 
 import java.awt.CardLayout;
-import java.awt.Color;
-import java.awt.Dimension;
 import java.text.NumberFormat;
 
 import javax.swing.JButton;
@@ -12,6 +10,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import ar.proyecto.controller.ActionSelectCbox;
+import ar.proyecto.controller.ActionSelectOk;
 
 public class MiddlePanelSelect extends MiddlePanel {
 	private JLabel from;
@@ -49,7 +48,7 @@ public class MiddlePanelSelect extends MiddlePanel {
 		cbTable = new JComboBox(cb);
 		cbTable.setAction(new ActionSelectCbox(this,centralPanel));
 		
-		ok = new JButton("OK");
+		ok = new JButton(new ActionSelectOk(this,"OK"));
 		
 		this.add(from);
 		this.add(cbTable);
@@ -75,16 +74,14 @@ public class MiddlePanelSelect extends MiddlePanel {
 	public String getSPaneFilled() {
 		return sPaneFilled;
 	}
+
+	public JComboBox getCbTable() {
+		return cbTable;
+	}
+
+	public JFormattedTextField getNroMulta() {
+		return nroMulta;
+	}
 	
-//	public void modifyCentralPanel() {
-//		centralPanel.removeAll();
-//		centralPanel.invalidate();
-//		centralPanel.setBackground(this.getBackground());
-//		centralPanel.setPreferredSize(new Dimension(widthpc,this.HEIGHT));
-//		centralPanel.add(whereNum);
-//		centralPanel.add(nroMulta);
-//		centralPanel.revalidate();
-//		System.out.println("In MiddlePanelSelect : ModifyCentralPanel");
-//	}
 	
 }
