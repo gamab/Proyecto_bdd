@@ -101,8 +101,14 @@ public class MainWindow extends JFrame {
 	
 	//Para mostrar un resultado en el panel de abajo
 	public void setResult(String result) {
-		
+		this.remove(panelBottom);
+		panelBottom.removeAll();
+		panelBottom.setPreferredSize(new Dimension(width,heightpb));
+		this.add(panelBottom,BorderLayout.SOUTH);
+		((BottomPanelString) panelBottom).setResult(result);
+		panelBottom.revalidate();
 	}
+	
 	//Para mostrar un resultado en forma de una tablita
 	public void setResult(ResultSet result) {
 		
