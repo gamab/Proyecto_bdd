@@ -1,6 +1,7 @@
 package ar.proyecto.gui;
 
 import java.awt.Color;
+import java.awt.Font;
 
 import javax.swing.BorderFactory;
 import javax.swing.JLabel;
@@ -27,11 +28,11 @@ public class BottomPanelString extends JPanel {
 		this.repaint();
 	}
 
-	private String convertToMultiligne(String result2) {
+	private String convertToMultiligne(String messageToChange) {
 		// TODO Auto-generated method stub
-		String message = result2.replaceAll("\n", "<br/>");
-//		message = message.replaceAll(" ", "_");
-		return "<html> " + message + "</html>";
+		String message = messageToChange.replaceAll("\n", "<br/>");
+		message = message.replaceAll(" ", "&nbsp;");
+		return "<html><font face=\"Monospace\" size=\"3\">" + message + "</html>";
 	}
 	
 }
