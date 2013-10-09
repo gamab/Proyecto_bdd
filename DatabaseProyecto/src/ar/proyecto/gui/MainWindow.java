@@ -51,8 +51,7 @@ public class MainWindow extends JFrame {
 		
 		panelTop = new TopPanel(this);
 		panelTop.setPreferredSize(new Dimension(width,heightpt));
-		panelMiddle = new MiddlePanel();
-		((MiddlePanel) panelMiddle).setGui(this);
+		panelMiddle = new MiddlePanel(this);
 		panelMiddle.setPreferredSize(new Dimension(width,heightpm));
 		panelBottom = new BottomPanelString();
 		panelBottom.setPreferredSize(new Dimension(width,heightpb));
@@ -84,13 +83,13 @@ public class MainWindow extends JFrame {
 	public void setMiddlePanel(RequestType type) {
 		switch (type) {
 		case NONE :
-			setMiddlePanel(new MiddlePanel());
+			setMiddlePanel(new MiddlePanel(this));
 			break;
 		case SELECT :
-			setMiddlePanel(new MiddlePanelSelect());
+			setMiddlePanel(new MiddlePanelSelect(this));
 			break;
 		case INSERT :
-			setMiddlePanel(new MiddlePanelInsert());
+			setMiddlePanel(new MiddlePanelInsert(this));
 			break;
 		case DELETE :
 			setMiddlePanel(new MiddlePanelDelete());

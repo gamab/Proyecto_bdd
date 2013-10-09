@@ -28,8 +28,8 @@ public class MiddlePanelSelect extends MiddlePanel {
 	private JButton ok;
 	
 	//constructor
-	public MiddlePanelSelect() {
-		super();
+	public MiddlePanelSelect(MainWindow gui) {
+		super(gui);
 		this.setLayout(new FlowLayout(FlowLayout.LEFT));
 		
 		from = new JLabel("FROM TABLE :");

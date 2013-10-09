@@ -34,8 +34,8 @@ public class MiddlePanelInsert extends MiddlePanel {
 		
 	//constructor
 	@SuppressWarnings({ "unchecked", "rawtypes" })
-	public MiddlePanelInsert() {
-		super();
+	public MiddlePanelInsert(MainWindow gui) {
+		super(gui);
 		//Inicializar los Labeles
 		into = new JLabel("INTO Vehiculo :");
 		nroPatente = new JLabel("nro_patente =");
