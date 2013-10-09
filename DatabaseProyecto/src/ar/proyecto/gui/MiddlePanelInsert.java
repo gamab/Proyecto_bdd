@@ -37,7 +37,7 @@ public class MiddlePanelInsert extends MiddlePanel {
 	public MiddlePanelInsert() {
 		super();
 		//Inicializar los Labeles
-		into = new JLabel("Into vehiculo :");
+		into = new JLabel("INTO Vehiculo :");
 		nroPatente = new JLabel("nro_patente =");
 		typo = new JLabel("typo =");
 		modelo = new JLabel("modelo =");
@@ -68,7 +68,7 @@ public class MiddlePanelInsert extends MiddlePanel {
 		ok = new JButton(new ActionInsert(this,"OK"));
 		
 		//Agregar todo al panel
-		this.setLayout(new FlowLayout());
+		this.setLayout(new FlowLayout(FlowLayout.LEFT));
 		this.add(into);
 		this.add(nroPatente);
 		this.add(txtNroPatente);
