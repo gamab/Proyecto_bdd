@@ -59,6 +59,7 @@ public class DatabaseConnection {
 	//#### SELECT ####
 	//Hacer un Select y devolver la tabla en un String
 	public String executeSelect(String select) {
+		System.out.println("In DatabaseConnection : received a select " + select);
 		String stringResult = new String();
 		try {
 			//Creacion de una consultat
@@ -85,6 +86,7 @@ public class DatabaseConnection {
 	//#### DELETE ####
 	//Hacer un Delete y devolver la tabla en un String
 	public String executeDelete(String delete) {
+		System.out.println("In DatabaseConnection : received a delete " + delete);
 		String stringResult = new String();
 		try {
 			//Creacion de una consultat
@@ -103,6 +105,7 @@ public class DatabaseConnection {
 
 	//#### INSERT ####
 	public String executeInsert(String insert) {
+		System.out.println("In DatabaseConnection : received an insert " + insert);
 		String stringResult = new String();
 		try {
 			//Creacion de una consultat
