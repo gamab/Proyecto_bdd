@@ -19,7 +19,7 @@ public class MiddlePanelSelect extends MiddlePanel {
 	private JFormattedTextField nroMulta;
 	private JPanel centralPanel;
 	private JPanel centralPanelEmpty;
-	private final static String sPaneEmpty = new String("Empty Pannel");;
+	private final static String sPaneEmpty = new String("Empty Pannel");
 	private final static String sPaneFilled = new String("Filled Pannel");
 	private JPanel centralPanelFilled;
 	private int widthpc = 400;
