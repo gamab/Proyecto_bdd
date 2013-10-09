@@ -27,11 +27,13 @@ public class MiddlePanelInsert extends MiddlePanel {
 	private JLabel ano;
 	private JFormattedTextField txtAno;	
 
+	@SuppressWarnings("rawtypes")
 	private JComboBox cboxMarca;
 	
 	private JButton ok;
 		
 	//constructor
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public MiddlePanelInsert() {
 		super();
 		//Inicializar los Labeles
@@ -54,7 +56,7 @@ public class MiddlePanelInsert extends MiddlePanel {
 		txtTypo.setColumns(4);
 		txtModelo = new JTextField();
 		txtModelo.setColumns(10);
-		txtAno = new JFormattedTextField(NumberFormat.getInstance());
+		txtAno = new JFormattedTextField(NumberFormat.getIntegerInstance());
 		txtAno.setColumns(4);
 		
 		//Inicializar el comboBox
