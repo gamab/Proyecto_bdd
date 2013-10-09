@@ -1,7 +1,7 @@
 package ar.proyecto.gui;
 
-import java.awt.BorderLayout;
 import java.awt.CardLayout;
+import java.awt.FlowLayout;
 import java.text.NumberFormat;
 
 import javax.swing.JButton;
@@ -21,7 +21,6 @@ public class MiddlePanelSelect extends MiddlePanel {
 	private JPanel centralPanel;
 	private JPanel centralPanelEmpty;
 	private JPanel centralPanelFilled;
-	private JPanel content;
 	private final static String sPaneEmpty = new String("Empty Pannel");
 	private final static String sPaneFilled = new String("Filled Pannel");
 	private int widthpc = 400;
@@ -31,9 +30,7 @@ public class MiddlePanelSelect extends MiddlePanel {
 	//constructor
 	public MiddlePanelSelect() {
 		super();
-		this.setLayout(new BorderLayout());
-		this.content = new JPanel();
-		this.content.setBackground(this.getBackground());
+		this.setLayout(new FlowLayout(FlowLayout.LEFT));
 		
 		from = new JLabel("FROM TABLE :");
 		
@@ -56,11 +53,10 @@ public class MiddlePanelSelect extends MiddlePanel {
 		
 		ok = new JButton(new ActionSelectOk(this,"OK"));
 		
-		this.content.add(from);
-		this.content.add(cbTable);
-		this.content.add(centralPanel);
-		this.content.add(ok);
-		this.add(content,BorderLayout.WEST);
+		this.add(from);
+		this.add(cbTable);
+		this.add(centralPanel);
+		this.add(ok);
 	}
 
 	private void initCentralPanelEmpty() {
