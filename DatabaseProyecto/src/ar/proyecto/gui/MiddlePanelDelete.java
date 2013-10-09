@@ -1,13 +1,10 @@
 package ar.proyecto.gui;
 
 import java.awt.FlowLayout;
-import java.awt.Graphics;
-import java.sql.Date;
 import java.text.NumberFormat;
 import java.text.ParseException;
 
 import javax.swing.JButton;
-import javax.swing.JComboBox;
 import javax.swing.JFormattedTextField;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
@@ -84,12 +81,13 @@ public class MiddlePanelDelete extends MiddlePanel {
 		this.add(txtTelefono);
 		this.add(puntosCarnet);
 		this.add(txtPuntosCarnet);
+	}
 		
 		public JFormattedTextField getTxtDni() {
-			return txtNroDni;
+			return txtDni;
 		}
 		
-		public JFormattedTextField getTxtNombreYApellido() {
+		public JTextField getTxtNombreYApellido() {
 			return txtNombreYApellido;
 		}
 		
@@ -111,4 +109,4 @@ public class MiddlePanelDelete extends MiddlePanel {
 
 	}
 
-}
+
