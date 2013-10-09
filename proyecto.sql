@@ -88,7 +88,7 @@ VALUES (11111111,'Gabriel Mabille','1992-12-05','Route de Sieuras - 09350 Meras 
 (33333333,'Brigitte Mabille','1960-04-12','La Grange - Route de Sieuras - 09350 Meras - France','0689865684','10'),
 (44444444,'Papá Noel','280-12-25','Myra - Distrito de Licia','xxxxxxxxxx','10'),
 (55555555,'Delinquant','1990-06-07','190 - Rue Claude Bertholler - 34090 Montepellier - France','0467563214','1');
-
+SELECT * FROM Persona;
 
 -- Vehiculo(*nro_patente,tipo,marca,modelo,ano)
 DELETE FROM Vehiculo;
@@ -99,6 +99,7 @@ VALUES ('31XZ47','Coche','FORD','Focus',2010),
 ('583468','Reno de la Navidad','FORD','Pixie', 0001),
 ('078PC5','Moto','RENAULT','K289',2010),
 ('123ABC','Moto','FIAT','K290',2013);
+SELECT * FROM Vehiculo;
 
 -- Propietario(*nro_patente,*dni)
 DELETE FROM Propietario;
@@ -109,6 +110,7 @@ VALUES ('31XZ47',11111111),
 ('583468',44444444),
 ('078PC5',55555555),
 ('123ABC',11111111);
+SELECT * FROM Propietario;
 
 -- http://www.taringa.net/posts/apuntes-y-monografias/12705800/Infracciones-de-Transito-CABA.html
 -- Infraccion(*codigo,descripcion,valor)
@@ -124,6 +126,7 @@ VALUES (6100,'Falta de Licencia',1000),
 (7050,'Violar Luz Roja',1200),
 (7170,'Exceso de Velocidad',100),
 (7270,'Conducir alcoholizado',300);
+SELECT * FROM Infraccion;
 
 -- Multa(*nro_multa,nro_patente,codigo_infraccion,dni,hora,fecha,lugar)
 DELETE FROM Multa;
@@ -139,6 +142,7 @@ VALUES(1,'31XZ47',7050, 11111111,'13:25:00','2013-05-12','Rio Cuarto'),
 (9,'078PC5',6540,55555555,'20:50:00','2013-05-15','Montpellier'),
 (10,'078PC5',7050,55555555,'22:22:00','2013-09-01','Montpellier'),
 (11,'078PC5',7050,55555555,'22:23:00','2013-09-01','Montpellier');
+SELECT * FROM Multa;
 
 -- ##########################
 -- ##       CONSULTAS      ##
