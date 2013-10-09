@@ -116,7 +116,7 @@ public class MainWindow extends JFrame {
 	}
 	
 	public void sendRequestToController(String request, RequestType type) {
-		
+		controller.sendRequestToModelAndUpdateGui(request, type);
 	}
 	
 }
