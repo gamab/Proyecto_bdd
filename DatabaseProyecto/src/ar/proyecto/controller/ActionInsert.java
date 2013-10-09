@@ -23,7 +23,7 @@ public class ActionInsert extends AbstractAction {
 			if (everythigEnteredWell()) {
 				String request = new String();
 				request = buildRequest();
-				System.out.print("In ActionInsert : Send request to controller : " + request);
+				System.out.println("In ActionInsert : Send request to controller : " + request);
 				panel.getGui().sendRequestToController(request, RequestType.INSERT);
 			}
 		}
