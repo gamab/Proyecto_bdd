@@ -11,9 +11,12 @@ public class MiddlePanel extends JPanel {
 	//Para communicar con la gui
 	private MainWindow gui;	
 	
-	public MiddlePanel() {
+	public MiddlePanel(MainWindow gui) {
 		super();
-		this.setBorder(BorderFactory.createTitledBorder("Command"));
+		this.gui=gui;
+		
+//		this.setBorder(BorderFactory.createTitledBorder("Command"));
+		
 		this.setBackground(new Color(Integer.parseInt("fff2e3",16)));
 		this.setVisible(true);
 	}

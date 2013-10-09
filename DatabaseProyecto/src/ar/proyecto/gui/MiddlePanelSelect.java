@@ -1,6 +1,7 @@
 package ar.proyecto.gui;
 
 import java.awt.CardLayout;
+import java.awt.FlowLayout;
 import java.text.NumberFormat;
 
 import javax.swing.JButton;
@@ -19,16 +20,18 @@ public class MiddlePanelSelect extends MiddlePanel {
 	private JFormattedTextField nroMulta;
 	private JPanel centralPanel;
 	private JPanel centralPanelEmpty;
+	private JPanel centralPanelFilled;
 	private final static String sPaneEmpty = new String("Empty Pannel");
 	private final static String sPaneFilled = new String("Filled Pannel");
-	private JPanel centralPanelFilled;
 	private int widthpc = 400;
 		
 	private JButton ok;
 	
 	//constructor
-	public MiddlePanelSelect() {
-		super();		
+	public MiddlePanelSelect(MainWindow gui) {
+		super(gui);
+		this.setLayout(new FlowLayout(FlowLayout.LEFT));
+		
 		from = new JLabel("FROM TABLE :");
 		
 		centralPanel = new JPanel();
