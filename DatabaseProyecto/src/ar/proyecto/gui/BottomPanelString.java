@@ -24,6 +24,7 @@ public class BottomPanelString extends JPanel {
 		this.result = new JLabel(convertToMultiligne(result));
 		this.add(this.result);
 		this.revalidate();
+		this.repaint();
 	}
 
 	private String convertToMultiligne(String result2) {
