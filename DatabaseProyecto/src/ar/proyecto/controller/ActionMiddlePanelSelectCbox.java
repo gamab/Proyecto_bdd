@@ -9,12 +9,12 @@ import javax.swing.JPanel;
 
 import ar.proyecto.gui.MiddlePanelSelect;
 
-public class ActionSelectCbox extends AbstractAction {
+public class ActionMiddlePanelSelectCbox extends AbstractAction {
 
 	MiddlePanelSelect panelPere;
 	JPanel panelAModifier;
 	
-	public ActionSelectCbox(MiddlePanelSelect panelPere, JPanel panelAModifier) {
+	public ActionMiddlePanelSelectCbox(MiddlePanelSelect panelPere, JPanel panelAModifier) {
 		this.panelPere = panelPere;
 		this.panelAModifier = panelAModifier;
 	}
