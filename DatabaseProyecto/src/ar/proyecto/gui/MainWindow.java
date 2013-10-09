@@ -15,11 +15,11 @@ public class MainWindow extends JFrame {
 	
 	//Para construir la ventana
 	private JPanel panelTop;
-	private int heightpt = 120;
+	private int heightpt = 70;
 	private JPanel panelMiddle;
-	private int heightpm = 120;
+	private int heightpm = 130;
 	private JPanel panelBottom;
-	private int heightpb = 360;
+	private int heightpb = 400;
 	private JPanel panelContent;
 	private String title;
 	private int width;
@@ -49,9 +49,9 @@ public class MainWindow extends JFrame {
 		panelContent.setLayout(new BorderLayout());
 
 		
-		panelTop = new TopPanel();
+		panelTop = new TopPanel(this);
 		panelTop.setPreferredSize(new Dimension(width,heightpt));
-		panelMiddle = new MiddlePanelInsert();
+		panelMiddle = new MiddlePanel();
 		((MiddlePanel) panelMiddle).setGui(this);
 		panelMiddle.setPreferredSize(new Dimension(width,heightpm));
 		panelBottom = new BottomPanelString();
@@ -71,12 +71,32 @@ public class MainWindow extends JFrame {
 	
 	//Para cambiar el panel del medio
 	public void setMiddlePanel(MiddlePanel panel) {
+		this.remove(panelMiddle);
+		panelMiddle.removeAll();
+		panel.setGui(this);
 		panelMiddle = panel;
+		panelMiddle.setPreferredSize(new Dimension(width,heightpm));
+		this.add(panelMiddle,BorderLayout.CENTER);
 		panelMiddle.revalidate();
+		System.out.println("In MainWindow : panel setted");
 	}
 	//Para cambiar el panel del medio
 	public void setMiddlePanel(RequestType type) {
-		
+		switch (type) {
+		case NONE :
+			setMiddlePanel(new MiddlePanel());
+			break;
+		case SELECT :
+			setMiddlePanel(new MiddlePanelSelect());
+			break;
+		case INSERT :
+			setMiddlePanel(new MiddlePanelInsert());
+			break;
+		case DELETE :
+			setMiddlePanel(new MiddlePanelDelete());
+			break;
+		}
+			
 	}
 	
 	//Para mostrar un resultado en el panel de abajo
