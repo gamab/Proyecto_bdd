@@ -13,7 +13,7 @@ public class MiddlePanel extends JPanel {
 	
 	public MiddlePanel() {
 		super();
-		this.setBorder(BorderFactory.createTitledBorder("Command"));
+//		this.setBorder(BorderFactory.createTitledBorder("Command"));
 		this.setBackground(new Color(Integer.parseInt("fff2e3",16)));
 		this.setVisible(true);
 	}
