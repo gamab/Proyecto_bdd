@@ -151,7 +151,8 @@ VALUES(1,'31XZ47',7050, 11111111,'13:25:00','2013-05-12','Rio Cuarto'),
 (8,'078PC5',6490,55555555,'19:40:00','2013-01-20','Montpellier'),
 (9,'078PC5',6540,55555555,'20:50:00','2013-05-15','Montpellier'),
 (10,'078PC5',7050,55555555,'22:22:00','2013-09-01','Montpellier'),
-(11,'078PC5',7050,55555555,'22:23:00','2013-09-01','Montpellier');
+(11,'078PC5',7050,55555555,'22:23:00','2013-09-01','Montpellier'),
+(12,'078PC5',7270,55555555,'23:43:00','2013-11-01','Montpellier');
 SELECT * FROM Multa;
 
 -- ##########################
@@ -168,6 +169,7 @@ WHERE (puntosCarnet >= 5) AND (codigo_infraccion = 7170);
 SELECT dni,nombreYApellido FROM Persona
 WHERE dni IN (SELECT dni FROM Multa GROUP BY dni HAVING COUNT(codigo_infraccion)>1); 
 
+-- Otra solucion
 SELECT dni,nombreYApellido FROM Persona NATURAL JOIN Multa
 GROUP BY dni
 HAVING COUNT(codigo_infraccion)>1;
@@ -214,7 +216,7 @@ GROUP BY nro_patente HAVING SUM(valor) >= COUNT(nro_patente)*500;
 --1) Proprietarios que tienen la misma edad que sus vehiculos.
 SELECT Persona.*,Vehiculo.* FROM Persona JOIN (Propietario NATURAL JOIN Vehiculo)
 ON (Persona.DNI = Propietario.DNI)
-WHERE (date_part('year',age(current_date,fechaNacimiento)) = abs(date_part('year',current_date) - Vehiculo.ano));
+WHERE (date_part('year',age(current_date,fechaNacimiento)) = Vehiculo.ano);
 
 --2) Proprietarios que tienen mas de un vehiculo
 --y cuantos vehiculos tienen 
