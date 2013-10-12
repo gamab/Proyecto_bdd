@@ -11,6 +11,7 @@ import javax.swing.JTextField;
 import javax.swing.text.MaskFormatter;
 
 import ar.proyecto.controller.ActionInsert;
+import ar.proyecto.controller.ActionMiddlePanelDeleteOk;
 
 public class MiddlePanelDelete extends MiddlePanel {
 	private JLabel into;
@@ -51,7 +52,9 @@ public class MiddlePanelDelete extends MiddlePanel {
 		puntosCarnet = new JLabel("Punto Carnet");
 		
 		//Inicializar los textFields
-		txtDni = new JFormattedTextField(NumberFormat.getIntegerInstance());
+		NumberFormat formatInteger = NumberFormat.getIntegerInstance();
+		formatInteger.setGroupingUsed(false);
+		txtDni = new JFormattedTextField(formatInteger);
 		txtDni.setColumns(5);
 		txtNombreYApellido = new JTextField();
 		txtNombreYApellido.setColumns(35);
@@ -71,7 +74,7 @@ public class MiddlePanelDelete extends MiddlePanel {
 		txtPuntosCarnet.setColumns(2);
 		
 		//Inicializar el Button
-		ok = new JButton("OK");
+		ok = new JButton(new ActionMiddlePanelDeleteOk(this,"OK"));
 		
 		//Agregar todo al panel
 		this.setLayout(new FlowLayout(FlowLayout.LEFT));
@@ -112,7 +115,7 @@ public class MiddlePanelDelete extends MiddlePanel {
 			return txtTelefono;
 		}
 
-		public JTextField getTxtPuntosCarnet() {
+		public JFormattedTextField getTxtPuntosCarnet() {
 			return txtPuntosCarnet;
 		}
 
