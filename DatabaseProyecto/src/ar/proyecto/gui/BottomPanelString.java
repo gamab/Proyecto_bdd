@@ -10,6 +10,16 @@ import javax.swing.JPanel;
 public class BottomPanelString extends JPanel {
 	private JLabel result;
 
+	public BottomPanelString(String result) {
+		super();
+//		this.setBackground(new Color(Integer.parseInt("ffece3",16)));
+		this.setBackground(Color.WHITE);
+		this.setBorder(BorderFactory.createTitledBorder("Result"));
+		this.result = new JLabel(result);
+		this.add(this.result);
+		this.setVisible(true);
+	}
+	
 	public BottomPanelString() {
 		super();
 //		this.setBackground(new Color(Integer.parseInt("ffece3",16)));
