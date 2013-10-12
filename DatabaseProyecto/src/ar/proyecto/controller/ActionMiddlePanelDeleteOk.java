@@ -37,15 +37,15 @@ public class ActionMiddlePanelDeleteOk extends AbstractAction {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
-		System.out.println("In ActionDeleteOk : received action " + e.getActionCommand());
+		System.out.println("En ActionMiddlePanelDeleteOk : accion recibida " + e.getActionCommand());
 		if (e.getActionCommand().equals("OK")) {
-			System.out.println(" In ActionDeleteOk : Check if action is OK");	
+			System.out.println("En ActionMiddlePanelDeleteOk : verificacion de la accion recibida");	
 			if (everythigEnteredWell()) {
-				System.out.println(" In ActionDeleteOk : everything entered well");
+				System.out.println("En ActionMiddlePanelDeleteOk : la accion esta bien");
 				String request = buildRequest();
-				System.out.println(" In ActionDeleteOk : request = " + request);
+				System.out.println("En ActionMiddlePanelDeleteOk : consulta = " + request);
 				gui.sendRequestToController(request, RequestType.DELETE);
-				System.out.println("In ActionDeleteOk : sending request to controller : " + request);
+				System.out.println("En ActionMiddlePanelDeleteOk : enviando al controllador la consulta : " + request);
 			}
 		}
 	}
@@ -90,7 +90,7 @@ public class ActionMiddlePanelDeleteOk extends AbstractAction {
 		boolean firstNotEmpty = true;
 		request += "DELETE FROM Persona WHERE ";
 		
-		System.out.print("In ActionMiddlePanelDeleteOk : Found not Empty :");
+		System.out.print("En ActionMiddlePanelDeleteOk : Lo que no esta vacio es :");
 		
 		if (!dni.getText().isEmpty()) {
 			firstNotEmpty = false;

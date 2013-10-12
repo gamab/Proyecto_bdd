@@ -19,11 +19,11 @@ public class ActionInsert extends AbstractAction {
 	public void actionPerformed(ActionEvent arg0) {
 		// TODO Auto-generated method stub
 		if (arg0.getActionCommand().equals("OK")) {
-			System.out.println("In ActionInsert : Detect clic on button OK");
+			System.out.println("En ActionInsert : fue detectado un clic sobre el button OK");
 			if (everythigEnteredWell()) {
 				String request = new String();
 				request = buildRequest();
-				System.out.println("In ActionInsert : Send request to controller : " + request);
+				System.out.println("En ActionInsert : fue enviada una consulta al controllador : " + request);
 				panel.getGui().sendRequestToController(request, RequestType.INSERT);
 			}
 		}
@@ -43,7 +43,7 @@ public class ActionInsert extends AbstractAction {
 		boolean allOk = true;
 		//Check NroPatente
 		if (isFilledWithSpace(panel.getTxtNroPatente().getText())) {
-			System.out.println("In ActionInsert : Not ok NroPatente");
+			System.out.println("En ActionInsert : NroPatente no esta bien");
 			panel.getTxtNroPatente().setBackground(Color.red);
 			allOk = false;
 		} else {
@@ -51,7 +51,7 @@ public class ActionInsert extends AbstractAction {
 		}
 		//Check Typo
 		if (panel.getTxtTypo().getText().isEmpty()) {
-			System.out.println("In ActionInsert : Not ok Typo");
+			System.out.println("En ActionInsert : Typo no esta bien");
 			panel.getTxtTypo().setBackground(Color.red);
 			allOk = false;
 		} else {
@@ -59,7 +59,7 @@ public class ActionInsert extends AbstractAction {
 		}
 		//Check Modelo
 		if (panel.getTxtModelo().getText().isEmpty()) {
-			System.out.println("In ActionInsert : Not ok Modelo");
+			System.out.println("En ActionInsert : Modelo no esta bien");
 			panel.getTxtModelo().setBackground(Color.red);
 			allOk = false;
 		} else {
@@ -67,7 +67,7 @@ public class ActionInsert extends AbstractAction {
 		}
 		//Check Ano
 		if (panel.getTxtAno().getText().isEmpty()) {
-			System.out.println("In ActionInsert : Not ok Ano");
+			System.out.println("En ActionInsert : Ano no esta bien");
 			panel.getTxtAno().setBackground(Color.red);
 			allOk = false;
 		} else {
