@@ -204,8 +204,9 @@ WHERE (codigo_infraccion = 7270) AND (tipo = 'Moto') ;
 
 -- Proponer 3 consultas donde 2 de ellas utilicen la clausula Group by
 
---0) ??
-SELECT nro_patente,COUNT(nro_patente) ,SUM(valor) FROM Vehiculo 
+--0) Aficha nro_patenten y nombre de infraccion de cada vehiculo donde la suma del precio de los infracciones es
+-- mas grande que 500
+SELECT nro_patente, COUNT(nro_patente) ,SUM(valor) FROM Vehiculo 
 NATURAL JOIN (Multa JOIN Infraccion ON (Multa.codigo_infraccion = Infraccion.codigo))
 GROUP BY nro_patente HAVING SUM(valor) >= COUNT(nro_patente)*500;
 
