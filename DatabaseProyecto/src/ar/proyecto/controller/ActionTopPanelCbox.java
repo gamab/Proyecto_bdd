@@ -27,7 +27,7 @@ public class ActionTopPanelCbox extends AbstractAction {
 		String result;
 		combobox = (JComboBox) arg0.getSource();
 		result = (String) combobox.getSelectedItem();
-		System.out.println("In ActionTopPanelCbox : Received Action " + result);
+		System.out.println("En ActionTopPanelCbox : accion recibida " + result);
 		if (result.equals("--")) {
 			gui.setMiddlePanel(RequestType.NONE);
 		}	
