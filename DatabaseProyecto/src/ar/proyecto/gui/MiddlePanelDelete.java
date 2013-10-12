@@ -59,7 +59,7 @@ public class MiddlePanelDelete extends MiddlePanel {
 		txtNombreYApellido = new JTextField();
 		txtNombreYApellido.setColumns(35);
 		try {
-			txtFechaDeNacimiento = new JFormattedTextField( new MaskFormatter("##'-##'-####"));
+			txtFechaDeNacimiento = new JFormattedTextField( new MaskFormatter("####'-##'-##"));
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
