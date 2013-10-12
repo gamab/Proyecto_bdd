@@ -22,14 +22,14 @@ public class ActionMiddlePanelSelectCbox extends AbstractAction {
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		JComboBox cb = (JComboBox) arg0.getSource();
-		System.out.println("In ActionSelectCbox : received command : " + (String)cb.getSelectedItem());
+		System.out.println("En ActionMiddlePanelSelectCbox : tabla seleccionada : " + (String)cb.getSelectedItem());
 		CardLayout cl = (CardLayout) panelAModifier.getLayout();
 		if (((String)cb.getSelectedItem()).equals("Multa")) {
-			System.out.println("In ActionSelectCbox : Setting Filled centralPanel");
+			System.out.println("En ActionMiddlePanelSelectCbox : Mostrando centralPanel");
 			cl.show(panelAModifier, panelPere.getSPaneFilled());
 		}
 		else if  (((String)cb.getSelectedItem()).equals("Infraccion")) {
-			System.out.println("In ActionSelectCbox : Setting Empty centralPanel");
+			System.out.println("En ActionMiddlePanelSelectCbox : Escondiendo centralPanel");
 			cl.show(panelAModifier, panelPere.getSPaneEmpty());
 		}
 	}
