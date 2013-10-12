@@ -214,7 +214,7 @@ GROUP BY nro_patente HAVING SUM(valor) >= COUNT(nro_patente)*500;
 --1) Proprietarios que tienen la misma edad que sus vehiculos.
 SELECT Persona.*,Vehiculo.* FROM Persona JOIN (Propietario NATURAL JOIN Vehiculo)
 ON (Persona.DNI = Propietario.DNI)
-WHERE (date_part('year',age(current_date,fechaNacimiento)) = Vehiculo.ano);
+WHERE (date_part('year',age(current_date,fechaNacimiento)) = abs(date_part('year',current_date) - Vehiculo.ano));
 
 --2) Proprietarios que tienen mas de un vehiculo
 --y cuantos vehiculos tienen 
