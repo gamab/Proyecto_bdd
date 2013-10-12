@@ -25,12 +25,12 @@ public class ActionMiddlePanelSelectOk extends AbstractAction{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
-		System.out.println("In ActionSelectOk : received action " + e.getActionCommand());
+		System.out.println("En ActionMiddlePanelSelectOk : accion recibida " + e.getActionCommand());
 		if (e.getActionCommand().equals("OK")) {
 			if (everythigEnteredWell()) {
 				String request = buildRequest();
+				System.out.println("En ActionMiddlePanelSelectOk : enviando request al controllador : " + request);
 				gui.sendRequestToController(request, RequestType.SELECT);
-				System.out.println("In ActionSelectOk : sending request to controller : " + request);
 			}
 		}
 	}
