@@ -78,7 +78,7 @@ public class MainWindow extends JFrame {
 		panelMiddle.setPreferredSize(new Dimension(width,heightpm));
 		this.add(panelMiddle,BorderLayout.CENTER);
 		panelMiddle.revalidate();
-		System.out.println("In MainWindow : panel setted");
+		System.out.println("En MainWindow : panel del medio agregado");
 	}
 	//Para cambiar el panel del medio
 	public void setMiddlePanel(RequestType type) {
@@ -107,6 +107,7 @@ public class MainWindow extends JFrame {
 		panelBottom.setPreferredSize(new Dimension(width,heightpb));
 		this.add(panelBottom,BorderLayout.SOUTH);
 		panelBottom.revalidate();
+		System.out.println("En MainWindow : panel de abajo agregado");
 	}
 	
 	//Para mostrar un resultado en forma de una tablita
@@ -117,6 +118,7 @@ public class MainWindow extends JFrame {
 		panelBottom.setPreferredSize(new Dimension(width,heightpb));
 		this.add(panelBottom,BorderLayout.SOUTH);
 		panelBottom.revalidate();
+		System.out.println("En MainWindow : panel de abajo agregado");
 	}
 	
 	//----------------------------
