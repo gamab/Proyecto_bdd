@@ -78,7 +78,7 @@ public class DatabaseConnection {
 	//Hacer un Select y devolver el resultado sin tratamiento
 	public ResultSet executeSelectBasic(String select) throws SQLException {
 		//Creacion de una consultat
-		Statement state = db.createStatement();
+		Statement state = db.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
 		//Eviar la respuesta		
 		return state.executeQuery(select);		
 	}
