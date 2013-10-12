@@ -34,9 +34,11 @@ public class TopPanel extends JPanel {
 		combo.setAction(new ActionTopPanelCbox(this.gui));
 		container.add(consultation);
 		container.add(combo);
-		container.setBackground(new Color(Integer.parseInt("fdffe3",16)));
+		container.setBackground(gui.getBackground());
+//		container.setBackground(new Color(Integer.parseInt("fdffe3",16)));
 		this.add(container,BorderLayout.WEST);
-		this.setBackground(new Color(Integer.parseInt("fdffe3",16)));
+		this.setBackground(gui.getBackground());
+//		this.setBackground(new Color(Integer.parseInt("fdffe3",16)));
 
 		
 	}
