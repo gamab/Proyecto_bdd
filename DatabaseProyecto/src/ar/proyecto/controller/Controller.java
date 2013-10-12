@@ -22,7 +22,7 @@ public class Controller {
 
 	//Executar una consulta y modificar la gui
 	public void sendRequestToModelAndUpdateGui(String request, RequestType type) {
-		System.out.println("In Controller : sendRequestToModelAndUpdateGui received " + request);
+		System.out.println("En Controller : en sendRequestToModelAndUpdateGui fue recibido " + request);
 
 		//si el request type esta select
 		if (type == RequestType.SELECT){	
@@ -31,11 +31,11 @@ public class Controller {
 				// resulta toma el resultat de la execucion de la request en el modelo
 				ResultSet result = dcModel.executeSelectBasic(request);
 				// update la gui
-				System.out.println("In Controller : sendRequestToModelAndUpdateGui executed a SELECT ");
+				System.out.println("En Controller : en sendRequestToModelAndUpdateGui fue executado un SELECT ");
 				gui.setResult(result);
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
-				System.out.println("In Controller : sendRequestToModelAndUpdateGui executed a SELECT ");
+				System.out.println("En Controller : en sendRequestToModelAndUpdateGui fue executado un SELECT ");
 				gui.setResult(e.getMessage());
 			}
 		}
@@ -43,18 +43,18 @@ public class Controller {
 		else if (type == RequestType.INSERT){
 			String result;
 			result = dcModel.executeInsert(request);;
-			System.out.println("In Controller : sendRequestToModelAndUpdateGui executed an INSERT ");
+			System.out.println("En Controller : en sendRequestToModelAndUpdateGui fue executado un INSERT ");
 			gui.setResult(result);
 		}
 		//si el request type esta delete
 		else if (type == RequestType.DELETE){
 			String result;
 			result = dcModel.executeDelete(request);
-			System.out.println("In Controller : sendRequestToModelAndUpdateGui executed an DELETE ");
+			System.out.println("En Controller : en sendRequestToModelAndUpdateGui fue executado un DELETE ");
 			gui.setResult(result);
 		}
 
-		System.out.println("In Controller : sendRequestToModelAndUpdateGui updated gui");
+		System.out.println("En Controller : en sendRequestToModelAndUpdateGui fue hecho un updated de la gui");
 	}
 
 }
