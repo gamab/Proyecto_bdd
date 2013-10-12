@@ -59,7 +59,7 @@ public class DatabaseConnection {
 	//#### SELECT ####
 	//Hacer un Select y devolver la tabla en un String
 	public String executeSelect(String select) {
-		System.out.println("In DatabaseConnection : received a select " + select);
+		System.out.println("En DatabaseConnection : consulta recibida " + select);
 		String stringResult = new String();
 		try {
 			//Creacion de una consultat
@@ -77,6 +77,7 @@ public class DatabaseConnection {
 
 	//Hacer un Select y devolver el resultado sin tratamiento
 	public ResultSet executeSelectBasic(String select) throws SQLException {
+		System.out.println("En DatabaseConnection : consulta recibida " + select);
 		//Creacion de una consultat
 		Statement state = db.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
 		//Eviar la respuesta		
@@ -86,7 +87,7 @@ public class DatabaseConnection {
 	//#### DELETE ####
 	//Hacer un Delete y devolver la tabla en un String
 	public String executeDelete(String delete) {
-		System.out.println("In DatabaseConnection : received a delete " + delete);
+		System.out.println("En DatabaseConnection : consulta recibida " + delete);
 		String stringResult = new String();
 		try {
 			//Creacion de una consultat
@@ -105,7 +106,7 @@ public class DatabaseConnection {
 
 	//#### INSERT ####
 	public String executeInsert(String insert) {
-		System.out.println("In DatabaseConnection : received an insert " + insert);
+		System.out.println("En DatabaseConnection : consulta recibida " + insert);
 		String stringResult = new String();
 		try {
 			//Creacion de una consultat
@@ -236,10 +237,10 @@ public class DatabaseConnection {
 	//Convert el resultado de un delete en un String
 	private String getDeleteResult(int result) {
 		if (result==0) {
-			return "Row doesn't exist. 0 row deleted.";
+			return "Este linea no existe. 0 linea borrada.";
 		}
 		else {
-			return "Deleted " + result + " rows.";
+			return result + "linea(s) borrada(s).";
 		}
 	}
 
@@ -248,10 +249,10 @@ public class DatabaseConnection {
 	//Convert el resultado de un delete en un String
 	private String getInsertResult(int result) {
 		if (result==0) {
-			return "Could not make insertion. 0 row inserted.";
+			return "No pudimos insertar. 0 linea insertada.";
 		}
 		else {
-			return "Inserted " + result + " rows.";
+			return result + "linea(s) insertada(s).";
 		}
 	}
 }
