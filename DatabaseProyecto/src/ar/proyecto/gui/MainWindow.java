@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -41,11 +42,11 @@ public class MainWindow extends JFrame {
 		this.setTitle(title);
 		this.setSize(new Dimension(width,height));
 		this.setLocationRelativeTo(null);
-		
+		this.setBackground(Color.white);
 		
 		panelContent = new JPanel();
 		panelContent.setPreferredSize(new Dimension(width, height));
-		panelContent.setBackground(Color.white);
+		panelContent.setBackground(this.getBackground());
 		panelContent.setLayout(new BorderLayout());
 
 		
@@ -102,15 +103,20 @@ public class MainWindow extends JFrame {
 	public void setResult(String result) {
 		this.remove(panelBottom);
 		panelBottom.removeAll();
+		panelBottom = new BottomPanelString(result);
 		panelBottom.setPreferredSize(new Dimension(width,heightpb));
 		this.add(panelBottom,BorderLayout.SOUTH);
-		((BottomPanelString) panelBottom).setResult(result);
 		panelBottom.revalidate();
 	}
 	
 	//Para mostrar un resultado en forma de una tablita
-	public void setResult(ResultSet result) {
-		
+	public void setResult(ResultSet result) throws SQLException {
+		this.remove(panelBottom);
+		panelBottom.removeAll();
+		panelBottom = new BottomPanelTable(result);
+		panelBottom.setPreferredSize(new Dimension(width,heightpb));
+		this.add(panelBottom,BorderLayout.SOUTH);
+		panelBottom.revalidate();
 	}
 	
 	//----------------------------
