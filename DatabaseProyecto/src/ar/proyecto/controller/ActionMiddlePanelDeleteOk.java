@@ -68,11 +68,11 @@ public class ActionMiddlePanelDeleteOk extends AbstractAction {
 		}
 		else if (!puntosCarnet.getText().isEmpty()){
 			if (Integer.valueOf(puntosCarnet.getText())> 10 || Integer.valueOf(puntosCarnet.getText())< 0 )
-				{
-					telefono.setBackground(Color.RED);
-					result = false;
-				}
+			{
+				telefono.setBackground(Color.RED);
+				result = false;
 			}
+		}
 		else{
 			dni.setBackground(Color.WHITE);
 			nombreYApellido.setBackground(Color.WHITE);
@@ -87,42 +87,58 @@ public class ActionMiddlePanelDeleteOk extends AbstractAction {
 
 	private String buildRequest() {
 		String request = new String();
-		String current = new String();
+		boolean firstNotEmpty = true;
 		request += "DELETE FROM Persona WHERE ";
-		current = dni.getText();
-		if (!current.isEmpty()) {
-			request += " dni = " + current;
-			if (!nombreYApellido.getText().isEmpty()  || !fechaDeNacimiento.getText().equals("  -  -    ") || !direccion.getText().isEmpty() || !telefono.getText().isEmpty() || !puntosCarnet.getText().isEmpty()){
+		
+		System.out.print("In ActionMiddlePanelDeleteOk : Found not Empty :");
+		
+		if (!dni.getText().isEmpty()) {
+			firstNotEmpty = false;
+			request += " dni = " + dni.getText();		
+			System.out.print("DNI ");
+		}
+		if (!nombreYApellido.getText().isEmpty()) {
+			if (!firstNotEmpty){
 				request += " AND ";
 			}
+			firstNotEmpty = false;
+			request += "nombreYApellido = \'" + nombreYApellido.getText() + "\'";
+			System.out.print("nombreYApellido ");
 		}
-		else if (!nombreYApellido.getText().isEmpty()) {
-			request += "nombreYApellido = " + nombreYApellido.getText();
-			if (!fechaDeNacimiento.getText().equals("  -  -    ") || !direccion.getText().isEmpty() || !telefono.getText().isEmpty() || !puntosCarnet.getText().isEmpty()){
+		if (!fechaDeNacimiento.getText().equals("  -  -    ")) {
+			if (!firstNotEmpty){
 				request += " AND ";
 			}
+			firstNotEmpty = false;
+			request += "fechaDeNacimiento = \'" + fechaDeNacimiento.getText() + "\'";
+			System.out.print("fechaDeNacimiento ");
 		}
-		else if (!fechaDeNacimiento.getText().equals("  -  -    ")) {
-			request += "fechaDeNacimiento = " + fechaDeNacimiento.getText();
-			if (!direccion.getText().isEmpty() || !telefono.getText().isEmpty() || !puntosCarnet.getText().isEmpty()){
+		if (!direccion.getText().isEmpty()) {
+			if (!firstNotEmpty){
 				request += " AND ";
 			}
+			firstNotEmpty = false;
+			request += "direccion =  \'" + direccion.getText() + "\'";
+			System.out.print("direccion ");
 		}
-		else if (!direccion.getText().isEmpty()) {
-			request += "direccion = " + direccion.getText();
-			if (!telefono.getText().isEmpty() || !puntosCarnet.getText().isEmpty()){
+		if (!telefono.getText().isEmpty()) {
+			if (!firstNotEmpty){
 				request += " AND ";
 			}
+			firstNotEmpty = false;
+			request += "telefono =  \'" + telefono.getText() + "\'";
+			System.out.print("telefono ");
 		}
-		else if (!telefono.getText().isEmpty()) {
-			request += "telefono = " + telefono.getText();
-			if (!puntosCarnet.getText().isEmpty()){
+
+		if (!puntosCarnet.getText().isEmpty()){
+			if (!firstNotEmpty){
 				request += " AND ";
 			}
-		}
-		else if (!puntosCarnet.getText().isEmpty()){
+			firstNotEmpty = false;
 			request += "puntosCarnet = " + puntosCarnet.getText();
+			System.out.print("puntosCarnet ");
 		}
+		System.out.println();
 		return request;
 	}
 }
