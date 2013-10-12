@@ -53,7 +53,7 @@ public class ActionMiddlePanelDeleteOk extends AbstractAction {
 	private boolean everythigEnteredWell() {
 		// TODO Auto-generated method stub
 		boolean result = true;
-		if (dni.getText().isEmpty() && nombreYApellido.getText().isEmpty() && fechaDeNacimiento.getText().equals("  -  -    ") && direccion.getText().isEmpty() && telefono.getText().isEmpty() && puntosCarnet.getText().isEmpty()) {
+		if (dni.getText().isEmpty() && nombreYApellido.getText().isEmpty() && fechaDeNacimiento.getText().equals("    -  -  ") && direccion.getText().isEmpty() && telefono.getText().isEmpty() && puntosCarnet.getText().isEmpty()) {
 			dni.setBackground(Color.RED);
 			nombreYApellido.setBackground(Color.RED);
 			fechaDeNacimiento.setBackground(Color.RED);
@@ -105,12 +105,12 @@ public class ActionMiddlePanelDeleteOk extends AbstractAction {
 			request += "nombreYApellido = \'" + nombreYApellido.getText() + "\'";
 			System.out.print("nombreYApellido ");
 		}
-		if (!fechaDeNacimiento.getText().equals("  -  -    ")) {
+		if (!fechaDeNacimiento.getText().equals("    -  -  ")) {
 			if (!firstNotEmpty){
 				request += " AND ";
 			}
 			firstNotEmpty = false;
-			request += "fechaDeNacimiento = \'" + fechaDeNacimiento.getText() + "\'";
+			request += "fechaNacimiento = \'" + fechaDeNacimiento.getText() + "\'";
 			System.out.print("fechaDeNacimiento ");
 		}
 		if (!direccion.getText().isEmpty()) {
