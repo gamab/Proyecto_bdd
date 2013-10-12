@@ -21,6 +21,7 @@ CREATE TYPE T_MARCA AS ENUM ('FIAT','FORD','RENAULT');
 -- ########################
 
 -- Persona(*DNI,nombreYApellido,fechaNacimiento,direccion,telefono,puntosCarnet)
+DROP TABLE Persona;
 CREATE TABLE Persona(
 dni INTEGER NOT NULL,
 nombreYApellido VARCHAR(80) NOT NULL,
@@ -33,16 +34,22 @@ CONSTRAINT pk_persona PRIMARY KEY (dni)
 );
 
 -- Vehiculo(*nro_patente,tipo,marca,modelo,ano)
+
+DROP TABLE Vehiculo;
 CREATE TABLE Vehiculo(
 nro_patente VARCHAR(6) NOT NULL,
 tipo VARCHAR(30),
 marca T_MARCA,
 modelo VARCHAR(30),
 ano INTEGER,
-CONSTRAINT pk_vehiculo PRIMARY KEY (nro_patente)
+CONSTRAINT pk_vehiculo PRIMARY KEY (nro_patente),
+CONSTRAINT ck_ano CHECK ((ano >1886) AND (ano < 2014))
 );
 
+
+
 -- Propietario(*nro_patente,*dni)
+DROP TABLE Propietario;
 CREATE TABLE Propietario(
 nro_patente VARCHAR(6) NOT NULL,
 dni INTEGER NOT NULL,
@@ -52,6 +59,7 @@ CONSTRAINT fk_dni_propietario FOREIGN KEY (dni) REFERENCES Persona(dni) ON DELET
 );
 
 -- Infraccion(*codigo,descripcion,valor)
+DROP TABLE Infraccion;
 CREATE TABLE Infraccion(
 codigo INTEGER NOT NULL,
 descripcion TEXT NOT NULL,
@@ -61,6 +69,7 @@ CONSTRAINT pk_infraccion PRIMARY KEY (codigo)
 );
 
 -- Multa(*nro_multa,nro_patente,codigo_infraccion,dni,hora,fecha,lugar)
+DROP TABLE Multa;
 CREATE TABLE Multa(
 nro_multa INTEGER NOT NULL,
 nro_patente VARCHAR(6) NOT NULL,
@@ -74,6 +83,7 @@ CONSTRAINT fk_patente_multa FOREIGN KEY (nro_patente) REFERENCES Vehiculo(nro_pa
 CONSTRAINT fk_dni_multa FOREIGN KEY (dni) REFERENCES Persona(dni) ON DELETE CASCADE,
 CONSTRAINT fk_codigo_infraccion_multa FOREIGN KEY (codigo_infraccion) REFERENCES Infraccion(codigo) ON DELETE CASCADE
 );
+
 
 
 -- ##########################
@@ -96,7 +106,7 @@ INSERT INTO Vehiculo
 VALUES ('31XZ47','Coche','FORD','Focus',2010),
 ('11KH8O','Coche','FIAT','Punto',2008),
 ('09KMC5','Moto','RENAULT','K27',2003),
-('583468','Reno de la Navidad','FORD','Pixie', 0001),
+('583468','Reno de la Navidad','FORD','Pixie', 1952),
 ('078PC5','Moto','RENAULT','K289',2010),
 ('123ABC','Moto','FIAT','K290',2013);
 SELECT * FROM Vehiculo;
@@ -162,18 +172,9 @@ SELECT dni,nombreYApellido FROM Persona NATURAL JOIN Multa
 GROUP BY dni
 HAVING COUNT(codigo_infraccion)>1;
 
+
 -- Vehiculos que contieron todas las infracciones cuyo valor superan los 500 pesos.
-SELECT nro_patente,SUM(valor) FROM Vehiculo 
-NATURAL JOIN (Multa JOIN Infraccion ON (Multa.codigo_infraccion = Infraccion.codigo))
-WHERE valor >= 500  GROUP BY nro_patente HAVING SUM(valor) >= (SELECT SUM(valor) FROM Infraccion WHERE valor >= 500) ;
 
-SELECT SUM(valor) FROM Infraccion WHERE valor >= 500;
-
-SELECT nro_patente,SUM(valor) FROM Vehiculo 
-NATURAL JOIN (Multa JOIN Infraccion ON (Multa.codigo_infraccion = Infraccion.codigo))
-WHERE valor >= 500 GROUP BY nro_patente;
-
--- Otra solucion
 -- cuantas infracciones hay con valor que supera 500 pesos?
 SELECT COUNT(*) FROM Infraccion
 WHERE valor >= 500;
@@ -213,7 +214,7 @@ GROUP BY nro_patente HAVING SUM(valor) >= COUNT(nro_patente)*500;
 --1) Proprietarios que tienen la misma edad que sus vehiculos.
 SELECT Persona.*,Vehiculo.* FROM Persona JOIN (Propietario NATURAL JOIN Vehiculo)
 ON (Persona.DNI = Propietario.DNI)
-WHERE (date_part('year',age(current_date,fechaNacimiento)) = date_part('year',current_date) - Vehiculo.ano);
+WHERE (date_part('year',age(current_date,fechaNacimiento)) = Vehiculo.ano);
 
 --2) Proprietarios que tienen mas de un vehiculo
 --y cuantos vehiculos tienen 
