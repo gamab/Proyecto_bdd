@@ -56,7 +56,9 @@ public class MiddlePanelInsert extends MiddlePanel {
 		txtTypo.setColumns(4);
 		txtModelo = new JTextField();
 		txtModelo.setColumns(10);
-		txtAno = new JFormattedTextField(NumberFormat.getIntegerInstance());
+		NumberFormat AnoFormatter = NumberFormat.getIntegerInstance();
+		AnoFormatter.setGroupingUsed(false);
+		txtAno = new JFormattedTextField(AnoFormatter);
 		txtAno.setColumns(4);
 		
 		//Inicializar el comboBox
