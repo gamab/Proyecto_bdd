@@ -38,7 +38,9 @@ public class MiddlePanelSelect extends MiddlePanel {
 		centralPanel.setLayout(new CardLayout());
 		
 		whereNum = new JLabel("WHERE nro_multa =");
-		nroMulta = new JFormattedTextField(NumberFormat.getIntegerInstance());
+		NumberFormat nroMultaFormat = NumberFormat.getIntegerInstance();
+		nroMultaFormat.setGroupingUsed(false);
+		nroMulta = new JFormattedTextField(nroMultaFormat);
 		nroMulta.setColumns(5);
 		initCentralPanelEmpty();
 		initCentralPanelFilled();
