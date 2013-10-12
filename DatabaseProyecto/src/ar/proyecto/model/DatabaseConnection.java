@@ -236,13 +236,10 @@ public class DatabaseConnection {
 	//Convert el resultado de un delete en un String
 	private String getDeleteResult(int result) {
 		if (result==0) {
-			return "Row doesn't exist";
-		}
-		else if (result==1) {
-			return "Row deleted";
+			return "Row doesn't exist. 0 row deleted.";
 		}
 		else {
-			return "Erreur " + result + " during delete";
+			return "Deleted " + result + " rows.";
 		}
 	}
 
@@ -251,13 +248,10 @@ public class DatabaseConnection {
 	//Convert el resultado de un delete en un String
 	private String getInsertResult(int result) {
 		if (result==0) {
-			return "Could not make insertion";
-		}
-		else if (result==1) {
-			return "Insertion has been made";
+			return "Could not make insertion. 0 row inserted.";
 		}
 		else {
-			return "Erreur " + result + " during insert";
+			return "Inserted " + result + " rows.";
 		}
 	}
 }
