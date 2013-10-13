@@ -20,8 +20,14 @@ CREATE TYPE T_MARCA AS ENUM ('FIAT','FORD','RENAULT');
 -- ## CREACION DE TABLAS ##
 -- ########################
 
--- Persona(*DNI,nombreYApellido,fechaNacimiento,direccion,telefono,puntosCarnet)
+-- Borrar tablas :
+DROP TABLE Multa;
+DROP TABLE Infraccion;
+DROP TABLE Propietario;
+DROP TABLE Vehiculo;
 DROP TABLE Persona;
+
+-- Persona(*DNI,nombreYApellido,fechaNacimiento,direccion,telefono,puntosCarnet)
 CREATE TABLE Persona(
 dni INTEGER NOT NULL,
 nombreYApellido VARCHAR(80) NOT NULL,
@@ -34,8 +40,6 @@ CONSTRAINT pk_persona PRIMARY KEY (dni)
 );
 
 -- Vehiculo(*nro_patente,tipo,marca,modelo,ano)
-
-DROP TABLE Vehiculo;
 CREATE TABLE Vehiculo(
 nro_patente VARCHAR(6) NOT NULL,
 tipo VARCHAR(30),
@@ -46,10 +50,7 @@ CONSTRAINT pk_vehiculo PRIMARY KEY (nro_patente),
 CONSTRAINT ck_ano CHECK ((ano >1886) AND (ano < 2014))
 );
 
-
-
 -- Propietario(*nro_patente,*dni)
-DROP TABLE Propietario;
 CREATE TABLE Propietario(
 nro_patente VARCHAR(6) NOT NULL,
 dni INTEGER NOT NULL,
@@ -59,7 +60,6 @@ CONSTRAINT fk_dni_propietario FOREIGN KEY (dni) REFERENCES Persona(dni) ON DELET
 );
 
 -- Infraccion(*codigo,descripcion,valor)
-DROP TABLE Infraccion;
 CREATE TABLE Infraccion(
 codigo INTEGER NOT NULL,
 descripcion TEXT NOT NULL,
@@ -69,7 +69,6 @@ CONSTRAINT pk_infraccion PRIMARY KEY (codigo)
 );
 
 -- Multa(*nro_multa,nro_patente,codigo_infraccion,dni,hora,fecha,lugar)
-DROP TABLE Multa;
 CREATE TABLE Multa(
 nro_multa INTEGER NOT NULL,
 nro_patente VARCHAR(6) NOT NULL,
@@ -83,8 +82,6 @@ CONSTRAINT fk_patente_multa FOREIGN KEY (nro_patente) REFERENCES Vehiculo(nro_pa
 CONSTRAINT fk_dni_multa FOREIGN KEY (dni) REFERENCES Persona(dni) ON DELETE CASCADE,
 CONSTRAINT fk_codigo_infraccion_multa FOREIGN KEY (codigo_infraccion) REFERENCES Infraccion(codigo) ON DELETE CASCADE
 );
-
-
 
 -- ##########################
 -- ## CREACION DE ARCHIVOS ##
