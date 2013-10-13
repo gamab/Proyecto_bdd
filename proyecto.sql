@@ -158,7 +158,7 @@ SELECT * FROM Multa;
 
 -- Personas(dni,nombreYApellido,fechaNacimiento) que cometieron la infraccion de
 -- "Exceso de Velocidad" y aun tienen mas de 5 puntos en su carnet.
--- /!\ Ejercicio inicial dice 10 puntos
+-- /!\ Ejercicio inicial dice 10 puntos pero no podemos tener mas de 10 puntos
 SELECT dni,nombreYApellido,fechaNacimiento FROM Persona NATURAL JOIN Multa
 WHERE (puntosCarnet >= 5) AND (codigo_infraccion = 7170);
 
