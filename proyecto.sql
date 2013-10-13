@@ -100,7 +100,7 @@ SELECT * FROM Persona;
 -- Vehiculo(*nro_patente,tipo,marca,modelo,ano)
 DELETE FROM Vehiculo;
 INSERT INTO Vehiculo
-VALUES ('31XZ47','Coche','FORD','Focus',2010),
+VALUES ('31XZ47','Coche','FORD','Focus',1993),
 ('11KH8O','Coche','FIAT','Punto',2008),
 ('09KMC5','Moto','RENAULT','K27',2003),
 ('583468','Reno de la Navidad','FORD','Pixie', 1952),
@@ -210,7 +210,7 @@ WHERE (codigo_infraccion = 7270) AND (tipo = 'Moto') ;
 
 -- Proponer 3 consultas donde 2 de ellas utilicen la clausula Group by
 
---0) Aficha nro_patenten y nombre de infraccion de cada vehiculo donde la suma del precio de los infracciones es
+--0) Muestra nro_patenten y nombre de infraccion de cada vehiculo donde la suma del precio de los infracciones es
 -- mas grande que 500
 SELECT nro_patente, COUNT(nro_patente) ,SUM(valor) FROM Vehiculo 
 NATURAL JOIN (Multa JOIN Infraccion ON (Multa.codigo_infraccion = Infraccion.codigo))
