@@ -184,9 +184,15 @@ JOIN Infraccion ON (Multa.codigo_infraccion = Infraccion.codigo);
 SELECT nro_patente,COUNT(DISTINCT codigo_infraccion) FROM Multa 
 JOIN Infraccion ON (Multa.codigo_infraccion = Infraccion.codigo)
 GROUP BY (nro_patente);
--- Quien tiene el numero de multas que superan 500 pesos
+-- Cuantas differentes que superan los 500pesos tienen cada uno?
 SELECT nro_patente,COUNT(DISTINCT codigo_infraccion) FROM Multa 
 JOIN Infraccion ON (Multa.codigo_infraccion = Infraccion.codigo)
+WHERE valor>=500
+GROUP BY (nro_patente);
+-- Quien tiene el numero de multas que superan 500 pesos?
+SELECT nro_patente,COUNT(DISTINCT codigo_infraccion) FROM Multa 
+JOIN Infraccion ON (Multa.codigo_infraccion = Infraccion.codigo)
+WHERE valor>=500
 GROUP BY (nro_patente)
 HAVING COUNT(DISTINCT codigo_infraccion) = (SELECT COUNT(*) FROM Infraccion WHERE valor >= 500);
 
