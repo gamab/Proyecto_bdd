@@ -174,7 +174,7 @@ HAVING COUNT(codigo_infraccion)>1;
 
 -- Vehiculos que contieron todas las infracciones cuyo valor superan los 500 pesos.
 
--- cuantas infracciones hay con valor que supera 500 pesos?
+-- Cuantas infracciones hay con valor que supera 500 pesos?
 SELECT COUNT(*) FROM Infraccion
 WHERE valor >= 500;
 -- Quien tiene multas?
@@ -213,7 +213,7 @@ GROUP BY nro_patente HAVING SUM(valor) >= COUNT(nro_patente)*500;
 --1) Proprietarios que tienen la misma edad que sus vehiculos.
 SELECT Persona.*,Vehiculo.* FROM Persona JOIN (Propietario NATURAL JOIN Vehiculo)
 ON (Persona.DNI = Propietario.DNI)
-WHERE (date_part('year',age(current_date,fechaNacimiento)) = Vehiculo.ano);
+WHERE (date_part('year',age(current_date,fechaNacimiento)) = abs(date_part('year',current_date) - Vehiculo.ano));
 
 --2) Proprietarios que tienen mas de un vehiculo
 --y cuantos vehiculos tienen 
