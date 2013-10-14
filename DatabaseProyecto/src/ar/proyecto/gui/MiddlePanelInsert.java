@@ -41,7 +41,7 @@ public class MiddlePanelInsert extends MiddlePanel {
 		nroPatente = new JLabel("nro_patente =");
 		typo = new JLabel("typo =");
 		modelo = new JLabel("modelo =");
-		ano = new JLabel("anos =");
+		ano = new JLabel("ano =");
 		
 		//Inicializar los textFields
 		try {
