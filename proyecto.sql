@@ -1,7 +1,7 @@
-﻿-- PROYECTO
-CREATE DATABASE Proyecto;
+﻿CAN T RUN BECAUSE OF THIS LINE
 
-CAN T RUN BECAUSE OF THIS LINE
+-- PROYECTO
+CREATE DATABASE Proyecto;
 
 -- #######################
 -- ## CREACION DE TYPOS ##
@@ -209,12 +209,6 @@ WHERE (codigo_infraccion = 7270) AND (tipo = 'Moto') ;
 -- age(current_date,fechaNacimiento) da el tiempo entre la fecha de hoy y una fecha de nacimiento
 
 -- Proponer 3 consultas donde 2 de ellas utilicen la clausula Group by
-
---0) Muestra nro_patenten y nombre de infraccion de cada vehiculo donde la suma del precio de los infracciones es
--- mas grande que 500
-SELECT nro_patente, COUNT(nro_patente) ,SUM(valor) FROM Vehiculo 
-NATURAL JOIN (Multa JOIN Infraccion ON (Multa.codigo_infraccion = Infraccion.codigo))
-GROUP BY nro_patente HAVING SUM(valor) >= COUNT(nro_patente)*500;
 
 --1) Proprietarios que tienen la misma edad que sus vehiculos.
 SELECT Persona.*,Vehiculo.* FROM Persona JOIN (Propietario NATURAL JOIN Vehiculo)
